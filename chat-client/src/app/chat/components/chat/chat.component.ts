@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
 
+import { Paginated } from '@feathersjs/feathers';
+
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+import { AuthService } from '@app/services/auth.service';
+import { DataService } from '@app/services/data.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,10 +18,25 @@ export class ChatComponent {
   messages$: Observable<any[]>;
   users$: Observable<any[]>;
 
-  constructor() { }
+  constructor(private el: ElementRef, private auth: AuthService, private data: DataService) {
+    this.messages$ = data.messages$()
+      .pipe(
+        map((m: Paginated<any>) => m.data),
+        tap(() => el.nativeElement.querySelector('.chat').scrollIntoView({ behavior: 'smooth' }))
+      );
 
-  sendMessage(message: string) { }
+    this.users$ = data.users$()
+      .pipe(
+        map((u: any[]) => u)
+      );
+  }
 
-  logOut() { }
+  sendMessage(message: string) {
+    this.data.sendMessage(message);
+  }
+
+  logOut() {
+    this.auth.logout();
+  }
 
 }
