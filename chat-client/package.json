@@ -20,9 +20,11 @@
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
     "bootstrap": "^4.5.3",
+    "faker": "^5.1.0",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {

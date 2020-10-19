@@ -1,1 +1,44 @@
-<p>login works!</p>
+<main class="container col-md-11 col-lg-9 col-xl-7">
+    <form [formGroup]="form">
+        <fieldset>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" id="firstName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" id="lastName" readonly>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" formControlName="address" class="form-control" id="address">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" formControlName="city" class="form-control" id="city">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="province">Province</label>
+                    <input type="text" formControlName="province" class="form-control" id="province" readonly>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="postalCode">Postal Code</label>
+                    <input type="text" formControlName="postalCode" class="form-control" id="postalCode">
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <button type="button" id="signup" class="btn btn-primary btn-lg btn-block" (click)="signup()">
+                    Signup
+                </button>
+            </div>
+        </div>
+    </form>
+    <ul>
+        <li *ngFor="let m of messages">{{ m }}</li>
+    </ul>
+</main>
