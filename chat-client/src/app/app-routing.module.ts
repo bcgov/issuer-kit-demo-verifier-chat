@@ -5,6 +5,7 @@ import { DisclaimerComponent } from './components/disclaimer/disclaimer.componen
 const routes: Routes = [
   { path: '', redirectTo: 'disclaimer', pathMatch: 'full' },
   { path: 'disclaimer', component: DisclaimerComponent },
+  { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) },
 ];
 
 @NgModule({
