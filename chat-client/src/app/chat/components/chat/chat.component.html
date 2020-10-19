@@ -1,1 +1,55 @@
-<p>chat works!</p>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand">Chat</div>
+    </nav>
+</header>
+
+<main>
+    <aside *ngIf="users$ | async as users">
+        <header>
+            <h4>
+                <span>{{ users?.length | number }}</span> users
+            </h4>
+        </header>
+        <div class="users">
+            <ul class="list-unstyled">
+                <li class="media" *ngFor="let user of users">
+                    <span class="avatar m-1 p-3">{{ user?.firstName?.substring(0, 1) | uppercase }}</span>
+                    <div class="media-body mr-1">
+                        <div class="name mt-1">{{ user?.firstName }}&nbsp;{{ user?.lastName }}</div>
+                        <div class="province mb-1">{{ user?.province }}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <a href="#" id="logout" class="btn btn-secondary" (click)="logOut()">
+                Sign Out
+            </a>
+        </footer>
+    </aside>
+
+    <div class="main">
+        <div class="chat" #chat [scrollTop]="chat.scrollHeight - chat.clientHeight">
+            <div class="message m-2" *ngFor="let message of messages$ | async">
+                <div class="message-wrapper">
+                    <div class="message-header">
+                        <span class="username"
+                            [title]="message?.user?.province">{{ message?.user?.firstName }}&nbsp;{{ message?.user?.lastName }}</span>
+                        <span class="sent-date ml-1">({{ message?.createdAt | date:'MMM dd, hh:mm:ss' }})</span>
+                    </div>
+                    <p class="message-content">{{ message?.text }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-form">
+            <form>
+                <div id="sendMessage" class="form-group col-12">
+                    <input #message type="text" name="text" class="form-control">
+                    <button class="btn btn-primary"
+                        (click)="sendMessage(message.value); message.value = ''">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

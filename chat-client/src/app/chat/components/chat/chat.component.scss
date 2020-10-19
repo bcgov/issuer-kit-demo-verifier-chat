@@ -1,0 +1,106 @@
+header {
+    position: sticky;
+    top: 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 275px 1fr;
+
+    header {
+        grid-area: 'header';
+        padding: 1rem;
+        background-color: white;
+    }
+
+    aside {
+        overflow: scroll;
+        display: grid;
+        grid:
+            'header' auto
+            'users' 1fr
+            'footer' 71px;
+        height: calc(100vh - 56px);
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: x-large;
+            border: 1px solid lightgray;
+            border-radius: 0.25rem;
+        }
+
+        .media:first-of-type {
+            .media-body {
+                border-top: 0.5px solid lightgray;
+            }
+        }
+
+        .media-body {
+            font-size: small;
+            border-bottom: 0.5px solid lightgray;
+
+            .province {
+                font-style: italic;
+                color: gray;
+            }
+        }
+    
+        footer {
+            grid-area: 'footer';
+            padding: 1rem;
+            position: sticky;
+            background: white;
+            bottom: 0;
+            a {
+                width: 100%;
+            }
+        }
+    }
+
+    .main {
+        overflow: scroll;
+        display: grid;
+        grid:
+            'chat' 1fr
+            'chat-form' 71px;
+        height: calc(100vh - 56px);
+
+        .chat {
+            grid-area: 'chat';
+
+            .message {
+                .message-header {
+                    font-size: small;
+                    .username {
+                        font-weight: bold;
+                    }
+                    .sent-date {
+                        color: gray;
+                    }
+                }
+            }
+        }
+        
+        .chat-form {
+            grid-area: 'chat-form';
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            padding-top: 1rem;
+        }
+    }
+}
+
+#sendMessage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+        margin: 0 0 0 1rem;
+    }
+}

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
+  messages$: Observable<any[]>;
+  users$: Observable<any[]>;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  sendMessage(message: string) { }
+
+  logOut() { }
 
 }
