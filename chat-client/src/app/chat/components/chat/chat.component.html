@@ -17,7 +17,7 @@
             </ul>
         </div>
         <footer>
-            <a href="#" id="logout" class="btn btn-secondary" (click)="logOut()">
+            <a href="#" id="logout" class="btn btn-outline-secondary" (click)="logOut()">
                 Sign Out
             </a>
         </footer>
@@ -40,7 +40,7 @@
             <form>
                 <div id="sendMessage" class="form-group col-12">
                     <input #message type="text" name="text" class="form-control">
-                    <button class="btn btn-primary"
+                    <button class="btn btn-outline-primary"
                         (click)="sendMessage(message.value); message.value = ''">Send</button>
                 </div>
             </form>

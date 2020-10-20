@@ -1,54 +1,54 @@
 <div class="wrapper container col-md-11 col-lg-9 col-xl-7">
-    <div class="card">
+    <div class="card border-light">
         <div class="card-body">
-            <!-- <h5 class="card-title">Signup</h5> -->
             <form [formGroup]="form">
                 <fieldset>
                     <div class="form-label-group">
                         <input type="text" formControlName="firstName" class="form-control" id="firstName"
-                            placeholder="First Name" readonly>
-                        <label for="firstName">First Name</label>
+                            [placeholder]="'login.form.first-name-text' | translate" readonly>
+                        <label for="firstName">{{ 'login.form.first-name-text' | translate }}</label>
                     </div>
                     <div class="form-label-group">
                         <input type="text" formControlName="lastName" class="form-control" id="lastName"
-                            placeholder="Last Name" readonly>
-                        <label for="lastName">Last Name</label>
+                            [placeholder]="'login.form.last-name-text' | translate" readonly>
+                        <label for="lastName">{{ 'login.form.last-name-text' | translate }}</label>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-label-group">
                         <input type="text" formControlName="address" class="form-control" id="address"
-                            placeholder="Address">
-                        <label for="address">Address</label>
+                            [placeholder]="'login.form.address-text' | translate">
+                        <label for="address">{{ 'login.form.address-text' | translate }}</label>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
                                 <input type="text" formControlName="city" class="form-control" id="city"
-                                    placeholder="City">
-                                <label for="city">City</label>
+                                    [placeholder]="'login.form.city-text' | translate">
+                                <label for="city">{{ 'login.form.city-text' | translate }}</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-label-group">
                                 <input type="text" formControlName="province" class="form-control" id="province"
-                                    placeholder="Province" readonly>
-                                <label for="province">Province</label>
+                                    [placeholder]="'login.form.province-text' | translate" readonly>
+                                <label for="province">{{ 'login.form.province-text' | translate }}</label>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-label-group">
                                 <input type="text" formControlName="postalCode" class="form-control" id="postalCode"
-                                    placeholder="Postal Code">
-                                <label for="postalCode">Postal Code</label>
+                                    [placeholder]="'login.form.postal-code-text' | translate">
+                                <label for="postalCode">{{ 'login.form.postal-code-text' | translate }}</label>
                             </div>
                         </div>
                     </div>
                 </fieldset>
                 <div class="row">
                     <div class="col-12">
-                        <button type="button" id="signup" class="btn btn-primary btn-lg btn-block" (click)="signup()">
-                            Signup
+                        <button type="button" id="signup" class="btn btn-outline-primary btn-lg btn-block"
+                            (click)="signup()">
+                            {{ 'login.form.signup-text' | translate }}
                         </button>
                     </div>
                 </div>

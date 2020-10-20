@@ -5,6 +5,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 275px 1fr;
+    overflow: auto;
 
     aside {
         overflow: scroll;

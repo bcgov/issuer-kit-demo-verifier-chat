@@ -1,12 +1,26 @@
 {
+    "navbar": {
+        "brand": "Chat (FR)",
+        "language": "EN"
+    },
     "disclaimer": {
         "title": "Terms of Service (FR)",
         "content": "Use of this service is governed by the following terms and conditions. Please read these terms and conditions carefully, as by using this website you will be deemed to have agreed to them. If you do not agree with these terms and conditions, do not use this service. (FR)",
         "form": {
-            "agree-checkbox-text": "I agree with the above terms and conditions.",
-            "agree-button-text": "Agree"
+            "agree-checkbox-text": "I agree with the above terms and conditions. (FR)",
+            "agree-button-text": "Agree (FR)"
         }
     },
-    "login": {},
+    "login": {
+        "form": {
+            "first-name-text": "First Name (FR)",
+            "last-name-text": "Last Name (FR)",
+            "address-text": "Address (FR)",
+            "city-text": "City (FR)",
+            "province-text": "Province (FR)",
+            "postal-code-text": "Postal Code (FR)",
+            "signup-text": "Signup (FR)"
+        }
+    },
     "chat": {}
 }

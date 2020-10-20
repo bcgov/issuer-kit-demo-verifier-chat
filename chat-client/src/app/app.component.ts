@@ -10,8 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'chat-client';
 
-  constructor(translate: TranslateService) {
+  constructor(private translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use('en');
+  }
+
+  toggleLanguage(): void {
+    const curr =  this.translate.currentLang;
+    this.translate.use(curr === 'en' ? 'fr' : 'en');
   }
 }
