@@ -1,0 +1,12 @@
+{
+    "disclaimer": {
+        "title": "Terms of Service",
+        "content": "Use of this service is governed by the following terms and conditions. Please read these terms and conditions carefully, as by using this website you will be deemed to have agreed to them. If you do not agree with these terms and conditions, do not use this service.",
+        "form": {
+            "agree-checkbox-text": "I agree with the above terms and conditions.",
+            "agree-button-text": "Agree"
+        }
+    },
+    "login": {},
+    "chat": {}
+}

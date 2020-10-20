@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.form-check {
+    position: relative;
+    display: flex;
+    padding-left: 1.25rem;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0;
+    margin-left: -1.25rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    margin-left: 0.25rem;
+}
