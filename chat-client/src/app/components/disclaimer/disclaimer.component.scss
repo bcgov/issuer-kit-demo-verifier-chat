@@ -1,11 +1,8 @@
 :host {
-    display: grid;
-    width: 100vw;
-    height: calc(100vh - 56px);
-    padding: 0.25rem;
+    display: contents;
 }
 
-main {
+.wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;

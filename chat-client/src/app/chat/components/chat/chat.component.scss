@@ -1,17 +1,10 @@
-header {
-    position: sticky;
-    top: 0;
+:host {
+    display: contents;
 }
 
-main {
+.wrapper {
     display: grid;
     grid-template-columns: 275px 1fr;
-
-    header {
-        grid-area: 'header';
-        padding: 1rem;
-        background-color: white;
-    }
 
     aside {
         overflow: scroll;
@@ -20,7 +13,6 @@ main {
             'header' auto
             'users' 1fr
             'footer' 71px;
-        height: calc(100vh - 56px);
 
         .avatar {
             width: 36px;
@@ -48,6 +40,12 @@ main {
                 color: gray;
             }
         }
+
+        header {
+            grid-area: 'header';
+            padding: 1rem;
+            background-color: white;
+        }
     
         footer {
             grid-area: 'footer';
@@ -67,7 +65,6 @@ main {
         grid:
             'chat' 1fr
             'chat-form' 71px;
-        height: calc(100vh - 56px);
 
         .chat {
             grid-area: 'chat';

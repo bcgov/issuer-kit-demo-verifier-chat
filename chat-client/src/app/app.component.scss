@@ -1,0 +1,12 @@
+header {
+    position: sticky;
+    top: 0;
+}
+
+main {
+    display: grid;
+    width: 100vw;
+    height: calc(100vh - 56px);
+    padding: 0.25rem;
+    grid-template-rows: min-content 100%;
+}

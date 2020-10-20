@@ -30,8 +30,8 @@ export const HttpLoaderFactory = (http: HttpClient) => {
     DisclaimerComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

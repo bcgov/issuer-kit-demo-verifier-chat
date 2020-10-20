@@ -1,10 +1,4 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-brand">Chat</div>
-    </nav>
-</header>
-
-<main>
+<div class="wrapper">
     <aside *ngIf="users$ | async as users">
         <header>
             <h4>
@@ -52,4 +46,4 @@
             </form>
         </div>
     </div>
-</main>
+</div>
