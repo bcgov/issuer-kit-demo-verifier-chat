@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    dsc-chat-server:
+        build:
+            context: ../chat-server/
+        ports:
+            - 3030:3030
+        networks:
+            - dsc
+        environment:
+            - RUNMODE=${RUNMODE}
+            - DOCKERHOST=${DOCKERHOST}
+    dsc-chat-client:
+        build:
+            context: ../chat-client/
+            args:
+                - RUNMODE=${RUNMODE}
+                - DOCKERHOST=${DOCKERHOST}
+                - DSC_SERVER_HOST=${DSC_SERVER_HOST}
+        ports:
+            - 8000:80
+        networks:
+            - dsc
+        depends_on:
+            - dsc-chat-server
+        environment:
+            - RUNMODE=${RUNMODE}
+            - DOCKERHOST=${DOCKERHOST}
+            - DSC_SERVER_HOST=${DSC_SERVER_HOST}
+networks:
+    dsc:

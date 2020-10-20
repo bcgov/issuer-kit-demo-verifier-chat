@@ -1,0 +1,75 @@
+#!/bin/bash
+
+function up() {
+	echo "Starting DSC Chat demo"
+
+	if [ ! -z "$DOCKERHOST" ]; then
+		# provided via APPLICATION_URL environment variable
+		export RUNMODE="docker"
+	elif [ -z "${PWD_HOST_FQDN}" ]; then
+		DOCKERHOST=`docker run --rm --net=host eclipse/che-ip`
+		export RUNMODE="docker"
+	else
+		PWD_HOST="${PWD_HOST_FQDN}"
+		if [ "$PWD_HOST_FQDN" = "labs.play-with-docker.com" ]; then
+			export ETH_CONFIG="eth1"
+		elif [ "$PWD_HOST_FQDN" = "play-with-docker.vonx.io" ]; then
+			export ETH_CONFIG="eth0"
+		else
+			export ETH_CONFIG="eth0"
+		fi
+		MY_HOST=`ifconfig ${ETH_CONFIG} | grep inet | cut -d':' -f2 | cut -d' ' -f1 | sed 's/\./\-/g'`
+		export DOCKERHOST="ip${MY_HOST}-${SESSION_ID}-{PORT}.direct.${PWD_HOST_FQDN}"
+		export RUNMODE="pwd"
+	fi
+
+	DOCKER_ENV="RUNMODE=${RUNMODE} DOCKERHOST=${DOCKERHOST}"
+	export $DOCKER_ENV
+
+	docker-compose -f ./docker/docker-compose.yaml up -d
+	exit 0
+}
+
+function down() {
+    echo "Shutting down DSC Chat demo"
+	docker-compose -f ./docker/docker-compose.yaml down
+	exit 0
+}
+
+function display_help() {
+	help="$(basename "$0") [up|down] [-h|--help]
+1) up will start demo in detached mode.
+	Example usage: ./run_demo up
+2) down will stop demo and tear down containers
+	Example usage: ./run_demo down
+Options:
+	-h|--help  Help"
+	echo "$help"
+}
+
+
+shopt -s nocasematch
+
+cd $(dirname $0)
+
+for i in "$@"
+do
+	case $i in
+	-h|--help)
+		display_help
+		exit 0
+	;;
+	up|down)
+		DEMO=$i
+	;;
+	esac
+done
+
+if [ "$DEMO" = "up" ]; then
+	up
+elif [ "$DEMO" = "down" ]; then
+	down
+else
+	display_help
+	exit 1
+fi

@@ -18,6 +18,7 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"]
-    }
+    },
+    "resolveJsonModule": true
   }
 }
