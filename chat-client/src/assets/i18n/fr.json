@@ -20,8 +20,13 @@
             "city-text": "City (FR)",
             "province-text": "Province (FR)",
             "postal-code-text": "Postal Code (FR)",
-            "signup-text": "Signup (FR)"
+            "signup-button-text": "Sign Up (FR)"
         }
     },
-    "chat": {}
+    "chat": {
+        "users": "{{ count }} users (FR)",
+        "form": {
+            "send-button-text": "Send (FR)"
+        }
+    }
 }
