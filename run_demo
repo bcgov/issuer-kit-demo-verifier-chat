@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function build() {
+	docker-compose -f ./docker/docker-compose.yaml build
+	exit 0
+}
+
 function up() {
 	echo "Starting DSC Chat demo"
 
@@ -37,10 +42,12 @@ function down() {
 }
 
 function display_help() {
-	help="$(basename "$0") [up|down] [-h|--help]
-1) up will start demo in detached mode.
+	help="$(basename "$0") [build|up|down] [-h|--help]
+1) build will rebuild demo images
+	Example usage: ./run_demo build
+2) up will start demo in detached mode.
 	Example usage: ./run_demo up
-2) down will stop demo and tear down containers
+3) down will stop demo and tear down containers
 	Example usage: ./run_demo down
 Options:
 	-h|--help  Help"
@@ -59,13 +66,15 @@ do
 		display_help
 		exit 0
 	;;
-	up|down)
+	build|up|down)
 		DEMO=$i
 	;;
 	esac
 done
 
-if [ "$DEMO" = "up" ]; then
+if [ "$DEMO" = "build" ]; then
+	build
+elif [ "$DEMO" = "up" ]; then
 	up
 elif [ "$DEMO" = "down" ]; then
 	down
