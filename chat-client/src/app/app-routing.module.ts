@@ -10,13 +10,11 @@ const routes: Routes = [
   { path: 'disclaimer', component: DisclaimerComponent },
   {
     path: 'oidc-callback',
-    loadChildren: () => import('./callback/callback.module').then(m => m.CallbackModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./callback/callback.module').then(m => m.CallbackModule)
   },
   {
     path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
   },
   { path: '**', redirectTo: 'disclaimer', pathMatch: 'full' },
 ];

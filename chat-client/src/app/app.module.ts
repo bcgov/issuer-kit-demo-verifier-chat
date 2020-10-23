@@ -10,11 +10,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
+import { SettingsMenuComponent } from './components/settings-menu/settings-menu.component';
 
 import { ConfigService } from './services/config.service';
 import { OidcConfigService as ChatOidcConfigService } from './services/oidc-config.service';
 
 import { SharedModule } from './shared/shared.module';
+
+import { httpInterceptorProviders } from './interceptors';
 
 export const AppInitializerFactory = (configService: ConfigService) => {
   return () => {
@@ -38,7 +41,8 @@ export const HttpLoaderFactory = (http: HttpClient) => {
 @NgModule({
   declarations: [
     AppComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    SettingsMenuComponent
   ],
   imports: [
     AppRoutingModule,
@@ -70,6 +74,7 @@ export const HttpLoaderFactory = (http: HttpClient) => {
         OidcConfigService
       ],
     },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

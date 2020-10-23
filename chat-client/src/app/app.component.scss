@@ -1,9 +1,15 @@
 header {
     z-index: 1;
 
-    .navbar-language {
-        a:hover {
-            cursor: pointer;
+    .navbar-settings {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .language {
+            margin: 0 0 0 0.5rem;
+            a:hover {
+                cursor: pointer;
+            }
         }
     }
 }

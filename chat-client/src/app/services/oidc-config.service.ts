@@ -21,6 +21,7 @@ export class OidcConfigService {
     silentRenew: true,
     silentRenewUrl: `${window.location.origin}/silent-renew-oidc.html`,
     startCheckSession: true,
+    postLoginRoute: '/oidc-callback',
     postLogoutRedirectUri: `${window.location.origin}`,
     unauthorizedRoute: "/",
   };

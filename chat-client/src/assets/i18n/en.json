@@ -1,7 +1,11 @@
 {
     "navbar": {
         "brand": "Chat",
-        "language": "FR"
+        "language": "FR",
+        "settings-menu": {
+            "login": "Log In",
+            "logout": "Log Out"
+        }
     },
     "disclaimer": {
         "title": "Terms of Service",
