@@ -5,7 +5,7 @@ import { authentication } from '@feathersjs/authentication-client/lib/hooks';
 import { TranslateService } from '@ngx-translate/core';
 
 import { OidcSecurityService } from 'angular-auth-oidc-client';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -38,5 +38,9 @@ export class AppComponent implements OnInit, OnDestroy {
   toggleLanguage(): void {
     const curr = this.translate.currentLang;
     this.translate.use(curr === 'en' ? 'fr' : 'en');
+  }
+
+  public get isAuthenticated$(): Observable<boolean> {
+    return this.oidcSecurityService.isAuthenticated$;
   }
 }

@@ -8,6 +8,8 @@ import * as uuid from 'uuid';
 import { FeathersService } from '@app/services/feathers.service';
 import { AuthService } from '@app/services/auth.service';
 
+import { tap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-entry',
   templateUrl: './entry.component.html',
@@ -17,8 +19,8 @@ export class EntryComponent implements OnInit {
   messages: string[] = [];
 
   form = this.fb.group({
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
+    firstName: null,
+    lastName: null,
     address: faker.address.streetAddress(),
     city: faker.address.city(),
     province: faker.address.state(),
@@ -48,5 +50,16 @@ export class EntryComponent implements OnInit {
     //   .then(() => this.router.navigateByUrl('/chat'))
     //   .catch(err => this.messages.unshift('Wrong credentials!'));
   }
+
+  public get userData$(): any {
+    return this.auth.userData$
+      .pipe(
+        tap((data: any) => {
+          this.form.get('firstName').patchValue(data.given_name);
+          this.form.get('lastName').patchValue(data.family_name);
+        })
+      )
+  }
+  
 }
 

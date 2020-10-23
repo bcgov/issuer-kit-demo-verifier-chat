@@ -23,11 +23,16 @@ export class AuthService {
    * logout
    */
   public logout(): void {
-    this.oidcSecurityService.logoff((redirect: string) => this.router.navigateByUrl(redirect));
+    this.oidcSecurityService.logoffAndRevokeTokens()
+      .subscribe((redirect: string) => this.router.navigateByUrl(redirect));
   }
 
   public get isAuthenticated$(): Observable<boolean> {
     return this.oidcSecurityService.isAuthenticated$;
+  }
+
+  public get userData$(): Observable<any> {
+    return this.oidcSecurityService.userData$;
   }
 
   public get token(): string {

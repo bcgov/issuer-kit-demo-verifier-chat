@@ -9,7 +9,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { CallbackComponent } from './components/callback/callback.component';
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 import { SettingsMenuComponent } from './components/settings-menu/settings-menu.component';
 
@@ -42,7 +41,6 @@ export const HttpLoaderFactory = (http: HttpClient) => {
 @NgModule({
   declarations: [
     AppComponent,
-    CallbackComponent,
     DisclaimerComponent,
     SettingsMenuComponent
   ],
