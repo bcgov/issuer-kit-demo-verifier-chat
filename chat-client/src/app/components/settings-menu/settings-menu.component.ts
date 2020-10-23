@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '@app/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-settings-menu',
@@ -18,4 +19,9 @@ export class SettingsMenuComponent {
   logout(): void {
     this.auth.logout();
   }
+
+  public get isAuthenticated$(): Observable<boolean> {
+    return this.auth.isAuthenticated$;
+  }
+  
 }

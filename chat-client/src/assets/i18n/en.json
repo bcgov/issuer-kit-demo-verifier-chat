@@ -24,7 +24,7 @@
             "city-text": "City",
             "province-text": "Province",
             "postal-code-text": "Postal Code",
-            "signup-button-text": "Sign Up"
+            "enter-button-text": "Enter"
         }
     },
     "chat": {
