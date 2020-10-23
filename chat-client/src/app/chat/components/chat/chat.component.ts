@@ -31,12 +31,7 @@ export class ChatComponent {
       );
   }
 
-  sendMessage(message: string) {
+  sendMessage(message: string): void {
     this.data.sendMessage(message);
   }
-
-  logOut() {
-    this.auth.logout();
-  }
-
 }

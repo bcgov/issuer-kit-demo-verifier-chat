@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-  private _config = {};
+  private conf = {};
 
   public get config(): any {
-    return this._config;
+    return this.conf;
   }
 
   public set config(c: any) {
-    this._config = c;
+    this.conf = c;
   }
 
   asyncSetConfig(input: Promise<any>): Promise<any> {

@@ -6,27 +6,27 @@ import { OpenIdConfiguration } from 'angular-auth-oidc-client';
   providedIn: 'root'
 })
 export class OidcConfigService {
-  private _config: OpenIdConfiguration = {
+  private conf: OpenIdConfiguration = {
     autoUserinfo: false,
-    clientId: "chat-client",
+    clientId: 'chat-client',
     customParams: {
-      pres_req_conf_id: "verified-email",
+      pres_req_conf_id: 'verified-email',
     },
-    forbiddenRoute: "/",
+    forbiddenRoute: '/',
     maxIdTokenIatOffsetAllowedInSeconds: 10,
     redirectUrl: `${window.location.origin}/oidc-callback`,
-    responseType: "code",
-    scope: "openid profile vc_authn",
-    stsServer: "http://localhost:8180/auth/realms/vc-authn",
+    responseType: 'code',
+    scope: 'openid profile vc_authn',
+    stsServer: 'http://localhost:8180/auth/realms/vc-authn',
     silentRenew: true,
     silentRenewUrl: `${window.location.origin}/silent-renew-oidc.html`,
     startCheckSession: true,
     postLoginRoute: '/oidc-callback',
     postLogoutRedirectUri: `${window.location.origin}`,
-    unauthorizedRoute: "/",
+    unauthorizedRoute: '/',
   };
 
   public get config(): any {
-    return this._config;
+    return this.conf;
   }
 }

@@ -34,7 +34,7 @@ export class CallbackComponent implements OnInit {
   }
 
   // DEPRECATED
-  signup() {
+  signup(): void {
     this.feathers.service('users')
       .create(this.form.value)
       .then(() => this.messages.push('User created.'))
