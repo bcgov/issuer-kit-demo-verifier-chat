@@ -29,12 +29,12 @@
                 </div>
             </div>
         </div>
-        <div class="chat-form">
+        <div class="chat-form" *ngIf="userData$ | async as user">
             <form>
                 <div id="sendMessage">
                     <input #message type="text" name="text" class="form-control">
                     <button class="btn btn-outline-primary"
-                        (click)="sendMessage(message.value); message.value = ''">
+                        (click)="sendMessage(message.value, user); message.value = ''">
                         {{ 'chat.form.send-button-text' | translate }}
                     </button>
                 </div>

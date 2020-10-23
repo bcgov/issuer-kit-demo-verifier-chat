@@ -30,7 +30,7 @@ export class DataService {
       .find();
   }
 
-  sendMessage(message: string): void {
+  sendMessage(message: string, user: any): void {
     if (message === '') {
       return;
     }
@@ -40,7 +40,8 @@ export class DataService {
     this.feathers
       .service('messages')
       .create({
-        text: message
+        text: message,
+        user
       });
   }
 }

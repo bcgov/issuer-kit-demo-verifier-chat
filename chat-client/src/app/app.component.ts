@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { from, Observable, of, Subscription } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { from, Observable, Subscription } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 import { AuthService } from './services/auth.service';
 import { FeathersService } from './services/feathers.service';
+import { UtilService } from './services/util.service';
 
 import * as hash from 'object-hash';
 
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private translate: TranslateService,
     private auth: AuthService,
-    private feathers: FeathersService
+    private feathers: FeathersService,
+    private util: UtilService
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
@@ -37,20 +39,11 @@ export class AppComponent implements OnInit, OnDestroy {
         filter((authenticated: boolean) => Boolean(authenticated)),
         switchMap(() => this.auth.userData$),
         switchMap((data: any) => {
-          const { given_names, family_name, street_address, locality, region, postal_code } = data;
+          const params = this.util.processTokenPayload(data);
 
-          if (!(given_names || family_name || street_address || locality || region || postal_code)) {
+          if (!(params.firstName && params.lastName && params.province)) {
             this.auth.logout();
           }
-
-          const params = {
-            firstName: given_names,
-            lastName: family_name,
-            address: street_address,
-            city: locality,
-            province: region,
-            postalCode: postal_code
-          };
 
           const id = hash(params);
 
