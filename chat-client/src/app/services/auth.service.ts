@@ -27,6 +27,13 @@ export class AuthService {
       .subscribe((redirect: string) => this.router.navigateByUrl(redirect));
   }
 
+  /**
+   * checkAuth
+   */
+  public checkAuth(url?: string): Observable<boolean> {
+    return this.oidcSecurityService.checkAuth(url)
+  }
+
   public get isAuthenticated$(): Observable<boolean> {
     return this.oidcSecurityService.isAuthenticated$;
   }

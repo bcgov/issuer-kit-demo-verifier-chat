@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { authentication } from '@feathersjs/authentication-client/lib/hooks';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { Observable, Subscription } from 'rxjs';
+
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,16 +17,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'chat-client';
 
-  constructor(private router: Router, private translate: TranslateService, private oidcSecurityService: OidcSecurityService) {
+  constructor(private router: Router, private translate: TranslateService, private auth: AuthService) {
     translate.setDefaultLang('en');
     translate.use('en');
   }
 
   ngOnInit(): void {
-    this.oidcSubscriptoion = this.oidcSecurityService.checkAuth()
+    this.oidcSubscriptoion = this.auth.checkAuth()
       .subscribe((authenticated: boolean) => {
         if (authenticated) {
-          this.router.navigateByUrl('/chat/entry');
+          this.router.navigateByUrl('/chat');
         }
       });
   }
@@ -41,6 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public get isAuthenticated$(): Observable<boolean> {
-    return this.oidcSecurityService.isAuthenticated$;
+    return this.auth.isAuthenticated$;
   }
 }

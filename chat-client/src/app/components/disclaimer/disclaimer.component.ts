@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
-import { AuthService } from '@app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disclaimer',
@@ -13,9 +12,9 @@ export class DisclaimerComponent {
     agree: [null, Validators.requiredTrue]
   });
 
-  constructor(private fb: FormBuilder, private auth: AuthService) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
-  submit(): void {
-    this.auth.login();
+  agree(): void {
+    this.router.navigateByUrl('/home');
   }
 }

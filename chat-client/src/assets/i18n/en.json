@@ -16,6 +16,11 @@
             "agree-button-text": "Agree"
         }
     },
+    "home": {
+        "form": {
+            "enter-button-text": "Enter"
+        }
+    },
     "entry": {
         "form": {
             "first-name-text": "First Name",

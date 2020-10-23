@@ -18,6 +18,7 @@ import { OidcConfigService as ChatOidcConfigService } from './services/oidc-conf
 import { SharedModule } from './shared/shared.module';
 
 import { httpInterceptorProviders } from './interceptors';
+import { HomeComponent } from './components/home/home.component';
 
 export const AppInitializerFactory = (configService: ConfigService) => {
   return () => {
@@ -42,7 +43,8 @@ export const HttpLoaderFactory = (http: HttpClient) => {
   declarations: [
     AppComponent,
     DisclaimerComponent,
-    SettingsMenuComponent
+    SettingsMenuComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,

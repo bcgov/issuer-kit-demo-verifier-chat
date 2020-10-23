@@ -16,6 +16,11 @@
             "agree-button-text": "Agree (FR)"
         }
     },
+    "home": {
+        "form": {
+            "enter-button-text": "Enter (FR)"
+        }
+    },
     "entry": {
         "form": {
             "first-name-text": "First Name (FR)",

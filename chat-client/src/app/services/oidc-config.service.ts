@@ -10,18 +10,19 @@ export class OidcConfigService {
     autoUserinfo: false,
     clientId: 'chat-client',
     customParams: {
-      pres_req_conf_id: 'verified-email',
+      kc_idp_hint: 'vc-authn',
+      pres_req_conf_id: 'verified-email'
     },
     forbiddenRoute: '/',
     maxIdTokenIatOffsetAllowedInSeconds: 10,
-    redirectUrl: `${window.location.origin}`,
+    redirectUrl: `${window.location.origin}/home`,
     responseType: 'code',
     scope: 'openid profile vc_authn',
     stsServer: 'http://localhost:8180/auth/realms/vc-authn',
     silentRenew: true,
     silentRenewUrl: `${window.location.origin}/silent-renew-oidc.html`,
     startCheckSession: true,
-    postLoginRoute: '/',
+    postLoginRoute: '/home',
     postLogoutRedirectUri: `${window.location.origin}`,
     unauthorizedRoute: '/',
   };
