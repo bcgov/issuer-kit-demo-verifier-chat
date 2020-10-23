@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -11,12 +12,22 @@ import { AppComponent } from './app.component';
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 
 import { ConfigService } from './services/config.service';
+import { OidcConfigService as ChatOidcConfigService } from './services/oidc-config.service';
 
 import { SharedModule } from './shared/shared.module';
 
 export const AppInitializerFactory = (configService: ConfigService) => {
   return () => {
-    return configService.asyncSetConfig(import('../assets/config.json'));
+    return configService.asyncSetConfig(import('../../config/config.json'));
+  };
+};
+
+export const OidcInitializerFactory = (
+  chatOidcConfigService: ChatOidcConfigService,
+  oidcConfigService: OidcConfigService
+) => {
+  return () => {
+    return oidcConfigService.withConfig(chatOidcConfigService.config);
   };
 };
 
@@ -33,6 +44,7 @@ export const HttpLoaderFactory = (http: HttpClient) => {
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    AuthModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -48,6 +60,15 @@ export const HttpLoaderFactory = (http: HttpClient) => {
       useFactory: AppInitializerFactory,
       multi: true,
       deps: [ConfigService],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: OidcInitializerFactory,
+      multi: true,
+      deps: [
+        ChatOidcConfigService,
+        OidcConfigService
+      ],
     },
   ],
   bootstrap: [AppComponent]
