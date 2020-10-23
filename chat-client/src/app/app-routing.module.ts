@@ -8,7 +8,11 @@ import { AuthGuard } from '@app/guards/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'disclaimer', pathMatch: 'full' },
   { path: 'disclaimer', component: DisclaimerComponent },
-  { path: 'oidc-callback', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  {
+    path: 'oidc-callback',
+    loadChildren: () => import('./callback/callback.module').then(m => m.CallbackModule),
+    canLoad: [AuthGuard]
+  },
   {
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),

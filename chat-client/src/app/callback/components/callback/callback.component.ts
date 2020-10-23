@@ -8,11 +8,11 @@ import * as uuid from 'uuid';
 import { FeathersService } from '@app/services/feathers.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-callback',
+  templateUrl: './callback.component.html',
+  styleUrls: ['./callback.component.scss']
 })
-export class LoginComponent {
+export class CallbackComponent {
   messages: string[] = [];
 
   form = this.fb.group({

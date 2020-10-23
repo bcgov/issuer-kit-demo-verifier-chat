@@ -12,7 +12,7 @@
             "agree-button-text": "Agree (FR)"
         }
     },
-    "login": {
+    "callback": {
         "form": {
             "first-name-text": "First Name (FR)",
             "last-name-text": "Last Name (FR)",
