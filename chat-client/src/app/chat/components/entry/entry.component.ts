@@ -9,11 +9,11 @@ import { FeathersService } from '@app/services/feathers.service';
 import { AuthService } from '@app/services/auth.service';
 
 @Component({
-  selector: 'app-callback',
-  templateUrl: './callback.component.html',
-  styleUrls: ['./callback.component.scss']
+  selector: 'app-entry',
+  templateUrl: './entry.component.html',
+  styleUrls: ['./entry.component.scss']
 })
-export class CallbackComponent implements OnInit {
+export class EntryComponent implements OnInit {
   messages: string[] = [];
 
   form = this.fb.group({
@@ -34,7 +34,7 @@ export class CallbackComponent implements OnInit {
   }
 
   // DEPRECATED
-  signup(): void {
+  enter(): void {
     this.router.navigateByUrl('/chat');
     // this.feathers.service('users')
     //   .create(this.form.value)
@@ -49,3 +49,4 @@ export class CallbackComponent implements OnInit {
     //   .catch(err => this.messages.unshift('Wrong credentials!'));
   }
 }
+

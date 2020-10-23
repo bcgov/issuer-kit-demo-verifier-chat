@@ -16,7 +16,7 @@
             "agree-button-text": "Agree"
         }
     },
-    "callback": {
+    "entry": {
         "form": {
             "first-name-text": "First Name",
             "last-name-text": "Last Name",
