@@ -23,5 +23,5 @@ export class SettingsMenuComponent {
   public get isAuthenticated$(): Observable<boolean> {
     return this.auth.isAuthenticated$;
   }
-  
+
 }

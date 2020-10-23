@@ -8,9 +8,9 @@
         </svg>
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <button *ngIf="!(isAuthenticated$ | async)" class="dropdown-item"
+        <button *ngIf="(isAuthenticated$ | async) === false" class="dropdown-item"
             (click)="login()">{{ 'navbar.settings-menu.login' | translate }}</button>
-        <button *ngIf="(isAuthenticated$ | async)" class="dropdown-item"
+        <button *ngIf="(isAuthenticated$ | async) === true" class="dropdown-item"
             (click)="logout()">{{ 'navbar.settings-menu.logout' | translate }}</button>
     </div>
 </div>

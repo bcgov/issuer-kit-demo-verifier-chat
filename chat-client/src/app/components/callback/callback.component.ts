@@ -35,16 +35,17 @@ export class CallbackComponent implements OnInit {
 
   // DEPRECATED
   signup(): void {
-    this.feathers.service('users')
-      .create(this.form.value)
-      .then(() => this.messages.push('User created.'))
-      .catch(err => this.messages.push('Could not create user!'))
-      .then(() => (this.feathers.authenticate({
-        strategy: 'local',
-        email: this.form.value.email,
-        password: this.form.value.password
-      })))
-      .then(() => this.router.navigateByUrl('/chat'))
-      .catch(err => this.messages.unshift('Wrong credentials!'));
+    this.router.navigateByUrl('/chat');
+    // this.feathers.service('users')
+    //   .create(this.form.value)
+    //   .then(() => this.messages.push('User created.'))
+    //   .catch(err => this.messages.push('Could not create user!'))
+    //   .then(() => (this.feathers.authenticate({
+    //     strategy: 'local',
+    //     email: this.form.value.email,
+    //     password: this.form.value.password
+    //   })))
+    //   .then(() => this.router.navigateByUrl('/chat'))
+    //   .catch(err => this.messages.unshift('Wrong credentials!'));
   }
 }

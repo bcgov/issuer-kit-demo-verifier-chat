@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private oidcSubscriptoion: Subscription
+  private oidcSubscriptoion: Subscription;
 
   title = 'chat-client';
 

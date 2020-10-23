@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.checkAuth();
+    return this.canActivate(next, state);
   }
 
   canLoad(
@@ -39,12 +39,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.checkAuth();
   }
 
-  private checkAuth(): Observable<boolean> | never {
+  private checkAuth(): Observable<boolean> {
     return this.auth.isAuthenticated$
       .pipe(
         map((authenticated: boolean) => {
           if (!authenticated) {
             this.router.navigateByUrl('/');
+            return false;
           }
           return true;
         })
