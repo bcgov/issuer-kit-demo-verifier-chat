@@ -11,7 +11,7 @@ export class OidcConfigService {
     clientId: 'chat-client',
     customParams: {
       kc_idp_hint: 'vc-authn',
-      pres_req_conf_id: 'verified-email'
+      pres_req_conf_id: 'verified-person'
     },
     forbiddenRoute: '/',
     maxIdTokenIatOffsetAllowedInSeconds: 10,
