@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-  private conf = {};
+  private conf: any;
 
   public get config(): any {
     return this.conf;
