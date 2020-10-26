@@ -1,0 +1,17 @@
+header {
+    z-index: 1;
+
+    .navbar-language {
+        a:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+main {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 56px;
+    grid-template-rows: 0fr auto;
+}

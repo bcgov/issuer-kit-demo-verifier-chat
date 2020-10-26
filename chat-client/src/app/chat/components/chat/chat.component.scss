@@ -1,26 +1,18 @@
-header {
-    position: sticky;
-    top: 0;
+:host {
+    display: contents;
 }
 
-main {
+.wrapper {
     display: grid;
-    grid-template-columns: 275px 1fr;
-
-    header {
-        grid-area: 'header';
-        padding: 1rem;
-        background-color: white;
-    }
+    grid-template-columns: 275px auto;
+    overflow: auto;
 
     aside {
         overflow: scroll;
         display: grid;
         grid:
-            'header' auto
             'users' 1fr
-            'footer' 71px;
-        height: calc(100vh - 56px);
+            'footer' auto;
 
         .avatar {
             width: 36px;
@@ -33,41 +25,34 @@ main {
             border-radius: 0.25rem;
         }
 
-        .media:first-of-type {
-            .media-body {
-                border-top: 0.5px solid lightgray;
-            }
-        }
-
         .media-body {
             font-size: small;
-            border-bottom: 0.5px solid lightgray;
 
             .province {
-                font-style: italic;
                 color: gray;
             }
         }
     
         footer {
             grid-area: 'footer';
-            padding: 1rem;
+            padding: 0.25rem;
             position: sticky;
             background: white;
             bottom: 0;
-            a {
-                width: 100%;
-            }
+            display: flex;
+            justify-content: center;
+            color: gray;
+            font-size: small;
         }
     }
 
     .main {
+        border-left: 1px solid lightgray;
         overflow: scroll;
         display: grid;
         grid:
             'chat' 1fr
-            'chat-form' 71px;
-        height: calc(100vh - 56px);
+            'chat-form' auto;
 
         .chat {
             grid-area: 'chat';
@@ -90,7 +75,7 @@ main {
             position: sticky;
             bottom: 0;
             background-color: white;
-            padding-top: 1rem;
+            padding: 1rem;
         }
     }
 }
@@ -101,6 +86,47 @@ main {
     justify-content: space-between;
 
     button {
-        margin: 0 0 0 1rem;
+        margin-left: 1rem;
+    }
+}
+
+/* For tablets: */
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: auto;
+
+        aside {
+            display: none;
+        }
+
+        .main {
+            .chat-form {
+                padding: 0.5rem;
+            }
+        }
+
+        #sendMessage {    
+            button {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+}
+
+
+/* For mobile phones: */
+@media only screen and (max-width: 384px) {
+    .wrapper {    
+        .main {
+            .chat-form {
+                padding: 0.25rem;
+            }
+        }
+    }
+
+    #sendMessage {    
+        button {
+            margin-left: 0.25rem;
+        }
     }
 }

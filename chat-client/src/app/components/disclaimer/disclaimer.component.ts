@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disclaimer',
   templateUrl: './disclaimer.component.html',
   styleUrls: ['./disclaimer.component.scss']
 })
-export class DisclaimerComponent implements OnInit {
+export class DisclaimerComponent {
+  form = this.fb.group({
+    agree: [null, Validators.requiredTrue]
+  });
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
-  ngOnInit(): void {
+  submit(): void {
+    this.router.navigateByUrl('/login');
   }
-
 }

@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand">{{ 'navbar.brand' | translate }}</div>
+        <div class="navbar-language ml-auto">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a (click)="toggleLanguage()">{{ 'navbar.language' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+</main>

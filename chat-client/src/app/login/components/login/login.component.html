@@ -1,44 +1,63 @@
-<main class="container col-md-11 col-lg-9 col-xl-7">
-    <form [formGroup]="form">
-        <fieldset>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" formControlName="firstName" class="form-control" id="firstName" readonly>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" formControlName="lastName" class="form-control" id="lastName" readonly>
-            </div>
-        </fieldset>
-        <fieldset>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" formControlName="address" class="form-control" id="address">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="city">City</label>
-                    <input type="text" formControlName="city" class="form-control" id="city">
+<div class="wrapper container col-md-11 col-lg-9 col-xl-7">
+    <div class="card border-light">
+        <div class="card-body">
+            <form [formGroup]="form">
+                <fieldset>
+                    <div class="form-label-group">
+                        <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                            [placeholder]="'login.form.first-name-text' | translate" readonly>
+                        <label for="firstName">{{ 'login.form.first-name-text' | translate }}</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                            [placeholder]="'login.form.last-name-text' | translate" readonly>
+                        <label for="lastName">{{ 'login.form.last-name-text' | translate }}</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-label-group">
+                        <input type="text" formControlName="address" class="form-control" id="address"
+                            [placeholder]="'login.form.address-text' | translate">
+                        <label for="address">{{ 'login.form.address-text' | translate }}</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-label-group">
+                                <input type="text" formControlName="city" class="form-control" id="city"
+                                    [placeholder]="'login.form.city-text' | translate">
+                                <label for="city">{{ 'login.form.city-text' | translate }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-label-group">
+                                <input type="text" formControlName="province" class="form-control" id="province"
+                                    [placeholder]="'login.form.province-text' | translate" readonly>
+                                <label for="province">{{ 'login.form.province-text' | translate }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-label-group">
+                                <input type="text" formControlName="postalCode" class="form-control" id="postalCode"
+                                    [placeholder]="'login.form.postal-code-text' | translate">
+                                <label for="postalCode">{{ 'login.form.postal-code-text' | translate }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" id="signup" class="btn btn-outline-primary btn-lg btn-block"
+                            (click)="signup()">
+                            {{ 'login.form.signup-text' | translate }}
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="province">Province</label>
-                    <input type="text" formControlName="province" class="form-control" id="province" readonly>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="postalCode">Postal Code</label>
-                    <input type="text" formControlName="postalCode" class="form-control" id="postalCode">
-                </div>
-            </div>
-        </fieldset>
-        <div class="form-row">
-            <div class="form-group col-12">
-                <button type="button" id="signup" class="btn btn-primary btn-lg btn-block" (click)="signup()">
-                    Signup
-                </button>
-            </div>
+            </form>
+            <ng-container *ngIf="messages?.length">
+                <ul>
+                    <li *ngFor="let m of messages">{{ m }}</li>
+                </ul>
+            </ng-container>
         </div>
-    </form>
-    <ul>
-        <li *ngFor="let m of messages">{{ m }}</li>
-    </ul>
-</main>
+    </div>
+</div>
