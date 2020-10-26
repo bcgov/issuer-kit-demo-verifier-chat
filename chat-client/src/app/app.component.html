@@ -1,12 +1,17 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="navbar-brand">{{ 'navbar.brand' | translate }}</div>
-        <div class="navbar-language ml-auto">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a (click)="toggleLanguage()">{{ 'navbar.language' | translate }}</a>
-                </li>
-            </ul>
+        <div class="navbar-settings ml-auto">
+            <div class="settings" *ngIf="isAuthenticated$ | async">
+                <app-settings-menu></app-settings-menu>
+            </div>
+            <div class="language">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a (click)="toggleLanguage()">{{ 'navbar.language' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>

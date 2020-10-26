@@ -2,18 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
+import { HomeComponent } from './components/home/home.component';
 
-import { AuthGuard } from '@app/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'disclaimer', pathMatch: 'full' },
-  { path: 'disclaimer', component: DisclaimerComponent },
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   {
     path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
   },
+  { path: 'disclaimer', component: DisclaimerComponent },
+  { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: 'disclaimer', pathMatch: 'full' },
 ];
 

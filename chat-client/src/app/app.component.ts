@@ -1,22 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
+
+import { from, Observable, Subscription } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
+
+import { AuthService } from './services/auth.service';
+import { FeathersService } from './services/feathers.service';
+import { UtilService } from './services/util.service';
+
+import * as hash from 'object-hash';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+  private oidcSubscriptoion: Subscription;
+
   title = 'chat-client';
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+    private auth: AuthService,
+    private feathers: FeathersService,
+    private util: UtilService
+  ) {
     translate.setDefaultLang('en');
     translate.use('en');
   }
 
+  ngOnInit(): void {
+    this.oidcSubscriptoion = this.auth.checkAuth()
+      .pipe(
+        filter((authenticated: boolean) => Boolean(authenticated)),
+        switchMap(() => this.auth.userData$),
+        switchMap((data: any) => {
+          const params = this.util.processTokenPayload(data);
+
+          if (!(params.firstName && params.lastName && params.province)) {
+            this.auth.logout();
+          }
+
+          const id = hash(params);
+
+          return from(this.feathers.service('users')
+            .get(id)
+            .then((user) => user)
+            .catch(() => this.feathers.service('users')
+              .create({ id, ...params })
+            ));
+        }),
+        tap(() => this.router.navigateByUrl('/chat'))
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.oidcSubscriptoion.unsubscribe();
+  }
+
   toggleLanguage(): void {
-    const curr =  this.translate.currentLang;
+    const curr = this.translate.currentLang;
     this.translate.use(curr === 'en' ? 'fr' : 'en');
+  }
+
+  public get isAuthenticated$(): Observable<boolean> {
+    return this.auth.isAuthenticated$;
   }
 }

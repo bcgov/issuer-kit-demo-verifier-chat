@@ -1,7 +1,11 @@
 {
     "navbar": {
         "brand": "Chat",
-        "language": "FR"
+        "language": "FR",
+        "settings-menu": {
+            "login": "Log In",
+            "logout": "Log Out"
+        }
     },
     "disclaimer": {
         "title": "Terms of Service",
@@ -12,7 +16,12 @@
             "agree-button-text": "Agree"
         }
     },
-    "login": {
+    "home": {
+        "form": {
+            "enter-button-text": "Enter"
+        }
+    },
+    "entry": {
         "form": {
             "first-name-text": "First Name",
             "last-name-text": "Last Name",
@@ -20,7 +29,7 @@
             "city-text": "City",
             "province-text": "Province",
             "postal-code-text": "Postal Code",
-            "signup-button-text": "Sign Up"
+            "enter-button-text": "Enter"
         }
     },
     "chat": {

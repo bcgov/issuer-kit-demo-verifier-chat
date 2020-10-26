@@ -14,6 +14,7 @@ import {
 import { AuthService } from '@app/services/auth.service';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,26 +25,30 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isAuthenticated();
+    return this.checkAuth();
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isAuthenticated();
+    return this.canActivate(next, state);
   }
+
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    return this.isAuthenticated();
+    return this.checkAuth();
   }
 
-  private isAuthenticated() {
-    return this.auth
-      .login()
-      .then(() => true)
-      .catch(() => {
-        this.router.navigateByUrl('/login');
-        return false;
-      });
+  private checkAuth(): Observable<boolean> {
+    return this.auth.isAuthenticated$
+      .pipe(
+        map((authenticated: boolean) => {
+          if (!authenticated) {
+            this.router.navigateByUrl('/');
+            return false;
+          }
+          return true;
+        })
+      );
   }
 }

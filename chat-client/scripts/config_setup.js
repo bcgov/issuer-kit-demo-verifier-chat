@@ -4,17 +4,17 @@ const path = require('path');
 const _runmode = process.env.RUNMODE;
 const _dockerhost = process.env.DOCKERHOST;
 
-let host = 'localhost';
-let port = '3030';
+let api_host = 'localhost';
+let api_port = '3030';
 
 if (_runmode === 'pwd') {
-    host = _dockerhost.replace('{PORT}', port);
+    host = _dockerhost.replace('{PORT}', api_port);
     port = '';
 }
 
 const config = {
-    HOST: host,
-    PORT: port,
+    API_HOST: api_host,
+    API_PORT: api_port,
     RUNMODE: _runmode,
     DOCKERHOST: _dockerhost
 };

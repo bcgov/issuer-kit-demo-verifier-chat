@@ -13,6 +13,6 @@ RUN npm run config && npm run build
 # Stage: runtime
 FROM nginx:alpine as runtime
 RUN rm -rf /usr/share/nginx/html/*
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /app/dist/chat-client /usr/share/nginx/html/
+COPY /config/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist/chat-client/ /usr/share/nginx/html/
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

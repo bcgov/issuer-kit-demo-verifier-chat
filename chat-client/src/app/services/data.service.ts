@@ -9,10 +9,10 @@ export class DataService {
 
   constructor(private feathers: FeathersService) { }
 
-  messages$() {
+  messages$(): any {
     // just returning the observable will query the backend on every subscription
     // using some caching mechanism would be wise in more complex applications
-    return (<any>this.feathers.service('messages'))
+    return (this.feathers.service('messages') as any)
       .watch()
       .find({
         query: {
@@ -22,15 +22,15 @@ export class DataService {
       });
   }
 
-  users$() {
+  users$(): any {
     // just returning the observable will query the backend on every subscription
     // using some caching mechanism would be wise in more complex applications
-    return (<any>this.feathers.service('users'))
+    return (this.feathers.service('users') as any)
       .watch()
       .find();
   }
 
-  sendMessage(message: string) {
+  sendMessage(message: string, user: any): void {
     if (message === '') {
       return;
     }
@@ -40,7 +40,8 @@ export class DataService {
     this.feathers
       .service('messages')
       .create({
-        text: message
+        text: message,
+        user
       });
   }
 }

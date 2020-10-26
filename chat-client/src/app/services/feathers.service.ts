@@ -13,16 +13,16 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class FeathersService {
-  private _config = this.configService.config;
-  private _host = this._config.HOST || 'localhost';
-  private _port = this._config.PORT || '3030';
+  private conf = this.configService.config;
+  private host = this.conf.HOST || 'localhost';
+  private port = this.conf.PORT || '3030';
 
-  private _feathers = feathers();
-  private _socket = io(`http://${this._host}${this._config.RUNMODE !== 'pwd' && `:${this._port}` || ''}`);
+  private client = feathers();
+  private socket = io(`http://${this.host}${this.conf.RUNMODE !== 'pwd' && `:${this.port}` || ''}`);
 
   constructor(private configService: ConfigService) {
-    this._feathers
-      .configure(feathersSocketIOClient(this._socket))
+    this.client
+      .configure(feathersSocketIOClient(this.socket))
       .configure(feathersAuthClient.default({
         storage: window.sessionStorage
       }))
@@ -31,15 +31,12 @@ export class FeathersService {
       }));
   }
 
-  public service(name: string) {
-    return this._feathers.service(name);
+  public service(name: string): any {
+    return this.client.service(name);
   }
 
+  // DEPRECATED
   public authenticate(credentials?): Promise<any> {
-    return this._feathers.authenticate(credentials);
-  }
-
-  public logout() {
-    return this._feathers.logout();
+    return this.client.authenticate(credentials);
   }
 }

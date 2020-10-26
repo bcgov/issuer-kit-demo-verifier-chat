@@ -10,12 +10,12 @@ module.exports = (options = {}) => {
       throw new Error('A message must have text');
     }
 
-    const { user } = context.params;
     const text = data.text.substring(0, 400);
+    const user = data.user;
 
     context.data = {
       text,
-      userId: user._id,
+      user,
       createdAt: new Date().getTime()
     };
 

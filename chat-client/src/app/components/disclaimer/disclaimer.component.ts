@@ -14,7 +14,7 @@ export class DisclaimerComponent {
 
   constructor(private fb: FormBuilder, private router: Router) { }
 
-  submit(): void {
-    this.router.navigateByUrl('/login');
+  agree(): void {
+    this.router.navigateByUrl('/home');
   }
 }

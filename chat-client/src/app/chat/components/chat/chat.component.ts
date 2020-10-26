@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { AuthService } from '@app/services/auth.service';
 import { DataService } from '@app/services/data.service';
+import { UtilService } from '@app/services/util.service';
 
 @Component({
   selector: 'app-chat',
@@ -18,11 +19,16 @@ export class ChatComponent {
   messages$: Observable<any[]>;
   users$: Observable<any[]>;
 
-  constructor(private el: ElementRef, private auth: AuthService, private data: DataService) {
+  constructor(
+    private el: ElementRef,
+    private auth: AuthService,
+    private data: DataService,
+    private util: UtilService
+  ) {
     this.messages$ = data.messages$()
       .pipe(
         map((m: Paginated<any>) => m.data),
-        tap(() => el.nativeElement.querySelector('.chat').scrollIntoView({ behavior: 'smooth' }))
+        tap(() => this.el.nativeElement.querySelector('.chat').scrollIntoView({ behavior: 'smooth' }))
       );
 
     this.users$ = data.users$()
@@ -31,12 +37,12 @@ export class ChatComponent {
       );
   }
 
-  sendMessage(message: string) {
-    this.data.sendMessage(message);
+  sendMessage(message: string, user: any): void {
+    this.data.sendMessage(message, this.util.processTokenPayload(user));
   }
 
-  logOut() {
-    this.auth.logout();
+  public get userData$(): Observable<any> {
+    return this.auth.userData$;
   }
 
 }
