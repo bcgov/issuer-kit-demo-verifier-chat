@@ -11,6 +11,8 @@ services:
         environment:
             - RUNMODE=${RUNMODE}
             - DOCKERHOST=${DOCKERHOST}
+        volumes:
+            - chat-server-data:/usr/src/app/data
     dsc-chat-client:
         build:
             context: ../chat-client/
@@ -40,3 +42,6 @@ services:
             - PRES_REQ_CONF_ID=${PRES_REQ_CONF_ID}
 networks:
     dsc:
+
+volumes:
+    chat-server-data:
