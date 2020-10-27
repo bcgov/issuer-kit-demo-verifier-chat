@@ -15,7 +15,7 @@
 # APP_CONFIG_MAP_NAME=dsc-chat-client-config
 # APP_CONFIG_MOUNT_PATH=/srv/assets/
 # APP_CONFIG_FILE_NAME=config.json
-APPLICATION_DOMAIN=test.pctftest.vonx.io
+APPLICATION_DOMAIN=pctftest-test.vonx.io
 # SOURCE_IMAGE_NAME=dsc-chat-client
 TAG_NAME=test
 # CPU_REQUEST=10m
