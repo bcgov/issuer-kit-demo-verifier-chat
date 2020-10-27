@@ -23,10 +23,11 @@ import { HomeComponent } from './components/home/home.component';
 export const OidcInitializerFactory = (
   configService: ConfigService,
   chatOidcConfigService: ChatOidcConfigService,
-  oidcConfigService: OidcConfigService
+  oidcConfigService: OidcConfigService,
+  http: HttpClient
 ) => {
   return () => {
-    return configService.asyncSetConfig(import('../assets/config.json'))
+    return configService.asyncSetConfig(http.get('/assets/config.json').toPromise())
       .then(() => oidcConfigService.withConfig(chatOidcConfigService.config));
   };
 };
@@ -64,7 +65,8 @@ export const HttpLoaderFactory = (http: HttpClient) => {
       deps: [
         ConfigService,
         ChatOidcConfigService,
-        OidcConfigService
+        OidcConfigService,
+        HttpClient
       ],
     },
     httpInterceptorProviders

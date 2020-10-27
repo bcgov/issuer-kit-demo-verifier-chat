@@ -1,42 +1,29 @@
-version: '3'
+version: "3"
 
 services:
     dsc-chat-server:
-        build:
-            context: ../chat-server/
+        image: dsc-chat-server
         ports:
             - 3030:3030
         networks:
             - dsc
-        environment:
-            - RUNMODE=${RUNMODE}
-            - DOCKERHOST=${DOCKERHOST}
+        volumes:
+            - chat-server-data:/usr/src/app/data
+
     dsc-chat-client:
-        build:
-            context: ../chat-client/
-            args:
-                - RUNMODE=${RUNMODE}
-                - DOCKERHOST=${DOCKERHOST}
-                - CHAT_SERVER=${CHAT_SERVER}
-                - STS_SERVER=${STS_SERVER}
-                - REALM=${REALM}
-                - CLIENT_ID=${CLIENT_ID}
-                - KC_IDP_HINT=${KC_IDP_HINT}
-                - PRES_REQ_CONF_ID=${PRES_REQ_CONF_ID}
+        image: dsc-chat-client
         ports:
-            - 8000:80
+            - 8000:8080
         networks:
             - dsc
         depends_on:
             - dsc-chat-server
-        environment:
-            - RUNMODE=${RUNMODE}
-            - DOCKERHOST=${DOCKERHOST}
-            - CHAT_SERVER=${CHAT_SERVER}
-            - STS_SERVER=${STS_SERVER}
-            - REALM=${REALM}
-            - CLIENT_ID=${CLIENT_ID}
-            - KC_IDP_HINT=${KC_IDP_HINT}
-            - PRES_REQ_CONF_ID=${PRES_REQ_CONF_ID}
+        volumes:
+            - ./client/config/config.json:/srv/assets/config.json
+            - ./client/config/Caddyfile:/etc/caddy/Caddyfile
+
 networks:
     dsc:
+
+volumes:
+    chat-server-data:

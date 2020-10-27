@@ -1,0 +1,9 @@
+:8080 {
+  root * /srv
+  file_server
+  encode zstd gzip
+  templates
+  respond /health 200
+  # Required for angular router to work
+  try_files {path} /index.html
+}

@@ -1,0 +1,25 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/server/server-deploy.json
+#=========================================================
+# NAME=dsc-chat-server
+# APP_NAME=dsc-chat
+# APP_GROUP=dsc-chat
+# SUFFIX=
+# ROLE=server
+# IMAGE_NAMESPACE=devex-von-tools
+# NAMESPACE_NAME=devex-von
+# SERVICE_PORT=8080
+APPLICATION_DOMAIN=dsc-chat-server-test.pathfinder.gov.bc.ca
+# SOURCE_IMAGE_NAME=dsc-chat-server
+TAG_NAME=test
+# MOUNT_PATH=/usr/src/app/data
+# PERSISTENT_VOLUME_SIZE=1Gi
+# PERSISTENT_VOLUME_CLASS=netapp-file-standard
+# MIN_REPLICAS=1
+# MAX_REPLICAS=2
+# CPU_REQUEST=10m
+# CPU_LIMIT=300m
+# MEMORY_REQUEST=10Mi
+# MEMORY_LIMIT=256Mi

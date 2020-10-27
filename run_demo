@@ -1,7 +1,12 @@
 #!/bin/bash
 
 function build() {
-	docker-compose -f ./docker/docker-compose.yaml build
+	echo -e "\nBuilding dsc-chat-server image..."
+	docker build -t dsc-chat-server -f docker/server/Dockerfile ./chat-server
+
+	
+	echo -e "\nBuilding dsc-chat-client image..."
+	docker build -t dsc-chat-client -f docker/client/Dockerfile.dev ./chat-client
 	exit 0
 }
 

@@ -1,0 +1,11 @@
+# Stage: build
+FROM node:erbium as build
+WORKDIR /app
+COPY package*.json /app/
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Stage: runtime
+FROM caddy:alpine as runtime
+COPY --from=build /app/dist/chat-client/ /srv/
