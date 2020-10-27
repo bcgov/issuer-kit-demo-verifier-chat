@@ -1,0 +1,9 @@
+{
+  "RUNMODE": "",
+  "CHAT_SERVER": "https://dsc-chat-server-dev.pathfinder.gov.bc.ca",
+  "STS_SERVER": "https://dev.oidc.gov.bc.ca",
+  "REALM": "gzyg46lx",
+  "CLIENT_ID": "issuer-kit-demo-verifier-chat",
+  "KC_IDP_HINT": "verifiable-credential",
+  "PRES_REQ_CONF_ID": "verified-person"
+}
