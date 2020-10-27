@@ -1,0 +1,44 @@
+{
+  "id": "pctf-chat",
+  "subject_identifier": "given_names",
+  "configuration": {
+    "name": "pctf-chat",
+    "version": "0.0.1",
+    "requested_attributes": [
+      {
+        "name": "given_names",
+        "label": "Given Names",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "family_name",
+        "label": "Family Name",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      },
+      {
+        "name": "region",
+        "label": "Province",
+        "restrictions": [
+          {
+            "schema_issuer_did": "85459GxjNySJ8HwTTQ4vq7",
+            "schema_name": "verified_person",
+            "schema_version": "1.4.0"
+          }
+        ]
+      }
+    ],
+    "requested_predicates": []
+  }
+}

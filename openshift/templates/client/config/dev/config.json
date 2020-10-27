@@ -5,5 +5,5 @@
   "REALM": "gzyg46lx",
   "CLIENT_ID": "issuer-kit-demo-verifier-chat",
   "KC_IDP_HINT": "verifiable-credential",
-  "PRES_REQ_CONF_ID": "verified-person"
+  "PRES_REQ_CONF_ID": "pctf-chat"
 }
