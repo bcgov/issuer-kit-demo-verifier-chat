@@ -1,0 +1,9 @@
+{
+  "RUNMODE": "",
+  "CHAT_SERVER": "http://dsc-chat-server:3030",
+  "STS_SERVER": "http://localhost:8180",
+  "REALM": "issuer-kit",
+  "CLIENT_ID": "issuer-kit-demo-verifier-chat",
+  "KC_IDP_HINT": "verifiable-credential",
+  "PRES_REQ_CONF_ID": "verified-person"
+}

@@ -1,6 +1,6 @@
-FROM node:10
+FROM node:erbium
 WORKDIR /app
 COPY chat-client/package*.json /app/
 RUN npm install
 COPY chat-client/ .
-RUN npm run config && npm run build
+RUN npm run build
