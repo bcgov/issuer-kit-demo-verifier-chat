@@ -16,8 +16,8 @@ export class DataService {
       .watch()
       .find({
         query: {
-          $sort: { createdAt: -1 },
-          $limit: 25
+          $sort: { createdAt: +1 },
+          $limit: 50
         }
       });
   }

@@ -48,7 +48,7 @@
 
     .main {
         border-left: 1px solid lightgray;
-        overflow: scroll;
+        overflow: hidden;
         display: grid;
         grid:
             'chat' 1fr
@@ -56,15 +56,26 @@
 
         .chat {
             grid-area: 'chat';
+            overflow: scroll;
+            display: flex;
+            flex-flow: column nowrap;
 
-            .message {
-                .message-header {
-                    font-size: small;
-                    .username {
-                        font-weight: bold;
+            .message-list {
+                margin-top: auto;
+
+                .message {
+                    .message-header {
+                        font-size: small;
+                        .username {
+                            font-weight: bold;
+                        }
+                        .sent-date {
+                            color: gray;
+                        }
                     }
-                    .sent-date {
-                        color: gray;
+
+                    .message-content {
+                        margin-bottom: 0;
                     }
                 }
             }

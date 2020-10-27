@@ -5,15 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class UtilService {
   processTokenPayload(payload: any): any {
-    const { given_names, family_name, street_address, locality, region, postal_code } = payload;
+    const { given_names, given_name, family_name, region } = payload;
 
     return {
-      firstName: given_names,
+      firstName: given_names || given_name,
       lastName: family_name,
-      address: street_address,
-      city: locality,
       province: region,
-      postalCode: postal_code
     };
   }
 }

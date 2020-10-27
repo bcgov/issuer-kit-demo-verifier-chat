@@ -14,11 +14,9 @@ import { ConfigService } from './config.service';
 })
 export class FeathersService {
   private conf = this.configService.config;
-  private host = this.conf.HOST || 'localhost';
-  private port = this.conf.PORT || '3030';
 
   private client = feathers();
-  private socket = io(`http://${this.host}${this.conf.RUNMODE !== 'pwd' && `:${this.port}` || ''}`);
+  private socket = io(`${this.conf.CHAT_SERVER || 'http://localhost:3030'}`);
 
   constructor(private configService: ConfigService) {
     this.client

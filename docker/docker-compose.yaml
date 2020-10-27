@@ -17,7 +17,12 @@ services:
             args:
                 - RUNMODE=${RUNMODE}
                 - DOCKERHOST=${DOCKERHOST}
-                - DSC_SERVER_HOST=${DSC_SERVER_HOST}
+                - CHAT_SERVER=${CHAT_SERVER}
+                - STS_SERVER=${STS_SERVER}
+                - REALM=${REALM}
+                - CLIENT_ID=${CLIENT_ID}
+                - KC_IDP_HINT=${KC_IDP_HINT}
+                - PRES_REQ_CONF_ID=${PRES_REQ_CONF_ID}
         ports:
             - 8000:80
         networks:
@@ -27,6 +32,11 @@ services:
         environment:
             - RUNMODE=${RUNMODE}
             - DOCKERHOST=${DOCKERHOST}
-            - DSC_SERVER_HOST=${DSC_SERVER_HOST}
+            - CHAT_SERVER=${CHAT_SERVER}
+            - STS_SERVER=${STS_SERVER}
+            - REALM=${REALM}
+            - CLIENT_ID=${CLIENT_ID}
+            - KC_IDP_HINT=${KC_IDP_HINT}
+            - PRES_REQ_CONF_ID=${PRES_REQ_CONF_ID}
 networks:
     dsc:

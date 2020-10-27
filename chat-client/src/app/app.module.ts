@@ -20,18 +20,14 @@ import { SharedModule } from './shared/shared.module';
 import { httpInterceptorProviders } from './interceptors';
 import { HomeComponent } from './components/home/home.component';
 
-export const AppInitializerFactory = (configService: ConfigService) => {
-  return () => {
-    return configService.asyncSetConfig(import('../../config/config.json'));
-  };
-};
-
 export const OidcInitializerFactory = (
+  configService: ConfigService,
   chatOidcConfigService: ChatOidcConfigService,
   oidcConfigService: OidcConfigService
 ) => {
   return () => {
-    return oidcConfigService.withConfig(chatOidcConfigService.config);
+    return configService.asyncSetConfig(import('../assets/config.json'))
+      .then(() => oidcConfigService.withConfig(chatOidcConfigService.config));
   };
 };
 
@@ -63,15 +59,10 @@ export const HttpLoaderFactory = (http: HttpClient) => {
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: AppInitializerFactory,
-      multi: true,
-      deps: [ConfigService],
-    },
-    {
-      provide: APP_INITIALIZER,
       useFactory: OidcInitializerFactory,
       multi: true,
       deps: [
+        ConfigService,
         ChatOidcConfigService,
         OidcConfigService
       ],

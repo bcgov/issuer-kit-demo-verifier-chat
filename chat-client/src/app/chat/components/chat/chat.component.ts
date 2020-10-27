@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
 import { Paginated } from '@feathersjs/feathers';
 
@@ -16,19 +16,21 @@ import { UtilService } from '@app/services/util.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatComponent {
+  @ViewChild('chat') chat: ElementRef;
+  @ViewChild('list') list: ElementRef;
+  @ViewChildren('message') messages: QueryList<any>;
+
   messages$: Observable<any[]>;
   users$: Observable<any[]>;
 
   constructor(
-    private el: ElementRef,
     private auth: AuthService,
     private data: DataService,
     private util: UtilService
   ) {
     this.messages$ = data.messages$()
       .pipe(
-        map((m: Paginated<any>) => m.data),
-        tap(() => this.el.nativeElement.querySelector('.chat').scrollIntoView({ behavior: 'smooth' }))
+        map((m: Paginated<any>) => m.data)
       );
 
     this.users$ = data.users$()
@@ -45,4 +47,14 @@ export class ChatComponent {
     return this.auth.userData$;
   }
 
+  ngAfterViewInit() {
+    this.scrollToBottom();
+    this.messages.changes.subscribe(this.scrollToBottom);
+  }
+  
+  scrollToBottom = () => {
+    if (this.messages && this.messages.length) {
+      this.list.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }
 }
