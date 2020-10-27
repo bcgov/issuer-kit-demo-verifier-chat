@@ -7,9 +7,6 @@ services:
             - 3030:3030
         networks:
             - dsc
-        environment:
-            - RUNMODE=${RUNMODE}
-            - DOCKERHOST=${DOCKERHOST}
         volumes:
             - chat-server-data:/usr/src/app/data
 
