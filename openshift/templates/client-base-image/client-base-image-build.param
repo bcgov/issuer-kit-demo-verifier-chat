@@ -6,7 +6,7 @@
 NAME=dsc-chat-client-base-image
 APP_NAME=dsc-chat
 APP_GROUP=dsc-chat-base-image
-GIT_REPO_URL=https://github.com/petridishdev/issuer-kit-demo-verifier-chat.git
+GIT_REPO_URL=https://github.com/bcgov/issuer-kit-demo-verifier-chat.git
 GIT_REF=main
 SOURCE_CONTEXT_DIR=.
 DOCKER_FILE_PATH=docker/client/Dockerfile
