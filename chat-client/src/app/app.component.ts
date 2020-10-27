@@ -18,9 +18,10 @@ import * as hash from 'object-hash';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private oidcSubscriptoion: Subscription;
+  private oidcSubscription: Subscription;
 
   title = 'chat-client';
+  loading = true;
 
   constructor(
     private router: Router,
@@ -34,9 +35,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.oidcSubscriptoion = this.auth.checkAuth()
+    this.oidcSubscription = this.auth.checkAuth()
       .pipe(
         filter((authenticated: boolean) => Boolean(authenticated)),
+        tap(() => this.router.navigateByUrl('/chat')),
         switchMap(() => this.auth.userData$),
         switchMap((data: any) => {
           const params = this.util.processTokenPayload(data);
@@ -52,15 +54,18 @@ export class AppComponent implements OnInit, OnDestroy {
             .then((user) => user)
             .catch(() => this.feathers.service('users')
               .create({ id, ...params })
-            ));
-        }),
-        tap(() => this.router.navigateByUrl('/chat'))
+            )
+            .catch(() => this.auth.logout()));
+        })
       )
-      .subscribe();
+      .subscribe({
+        next: () => this.loading = false,
+        complete: () => this.loading = false
+      });
   }
 
   ngOnDestroy(): void {
-    this.oidcSubscriptoion.unsubscribe();
+    this.oidcSubscription.unsubscribe();
   }
 
   toggleLanguage(): void {

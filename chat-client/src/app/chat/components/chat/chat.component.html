@@ -17,15 +17,17 @@
     </aside>
 
     <div class="main">
-        <div class="chat" #chat [scrollTop]="chat.scrollHeight - chat.clientHeight">
-            <div class="message m-2" *ngFor="let message of messages$ | async">
-                <div class="message-wrapper">
-                    <div class="message-header">
-                        <span class="username"
-                            [title]="message?.user?.province">{{ message?.user?.firstName }}&nbsp;{{ message?.user?.lastName }}</span>
-                        <span class="sent-date ml-1">({{ message?.createdAt | date:'MMM dd, hh:mm:ss' }})</span>
+        <div class="chat" #chat>
+            <div #list class="message-list">
+                <div #message class="message m-2" *ngFor="let message of messages$ | async">
+                    <div class="message-wrapper">
+                        <div class="message-header">
+                            <span class="username"
+                                [title]="message?.user?.province">{{ message?.user?.firstName }}&nbsp;{{ message?.user?.lastName }}</span>
+                            <span class="sent-date ml-1">({{ message?.createdAt | date:'MMM dd, hh:mm:ss' }})</span>
+                        </div>
+                        <p class="message-content">{{ message?.text }}</p>
                     </div>
-                    <p class="message-content">{{ message?.text }}</p>
                 </div>
             </div>
         </div>

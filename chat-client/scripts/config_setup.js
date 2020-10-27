@@ -7,7 +7,7 @@ const _chatServer = process.env.CHAT_SERVER;
 const _stsServer = process.env.STS_SERVER;
 const _realm = process.env.REALM;
 const _clientId = process.env.CLIENT_ID;
-const _kcIdpHint = process.env.KC_IPD_HINT;
+const _kcIdpHint = process.env.KC_IDP_HINT;
 const _presReqConfId = process.env.PRES_REQ_CONF_ID;
 
 let _host = 'localhost';
@@ -27,7 +27,7 @@ const config = {
     STS_SERVER: _stsServer,
     REALM: _realm,
     CLIENT_ID: _clientId,
-    KC_IPD_HINT: _kcIdpHint,
+    KC_IDP_HINT: _kcIdpHint,
     PRES_REQ_CONF_ID: _presReqConfId
 };
 
