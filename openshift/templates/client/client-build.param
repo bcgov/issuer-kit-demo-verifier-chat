@@ -1,0 +1,16 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/client/client-build.json
+#=========================================================
+NAME=dsc-chat-client
+APP_NAME=dsc-chat
+APP_GROUP=dsc-chat-runtime
+OUTPUT_IMAGE_TAG=latest
+SOURCE_IMAGE_TAG=alpine
+SOURCE_IMAGE_NAME=caddy
+SOURCE_IMAGE_KIND=DockerImage
+ARTIFACT_IMAGE_NAME=dsc-chat-client-base-image
+ARTIFACT_IMAGE_TAG=latest
+ARTIFACT_IMAGE_NAMESPACE=devex-von-tools
+ARTIFACT_IMAGE_KIND=ImageStreamTag

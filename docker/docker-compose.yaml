@@ -16,7 +16,7 @@ services:
     dsc-chat-client:
         image: dsc-chat-client
         ports:
-            - 8000:80
+            - 8000:8080
         networks:
             - dsc
         depends_on:

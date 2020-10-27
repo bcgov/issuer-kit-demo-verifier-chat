@@ -1,0 +1,24 @@
+#=========================================================
+# OpenShift template parameters for:
+# Component: .
+# Template File: ../openshift/templates/client/client-deploy.json
+#=========================================================
+# NAME=dsc-chat-client
+# APP_NAME=dsc-chat
+# APP_GROUP=dsc-chat
+# SUFFIX=
+# ROLE=client
+# IMAGE_NAMESPACE=devex-von-tools
+# NAMESPACE_NAME=devex-von
+# NGINX_CONFIG_MOUNT_PATH=/etc/caddy/
+# NGINX_CONFIG_FILE_NAME=Caddyfile
+# APP_CONFIG_MAP_NAME=dsc-chat-client-config
+# APP_CONFIG_MOUNT_PATH=/srv/assets/
+# APP_CONFIG_FILE_NAME=config.json
+APPLICATION_DOMAIN=dev.pctftest.vonx.io
+# SOURCE_IMAGE_NAME=dsc-chat-client
+TAG_NAME=dev
+# CPU_REQUEST=10m
+# CPU_LIMIT=250m
+# MEMORY_REQUEST=100Mi
+# MEMORY_LIMIT=256Mi
