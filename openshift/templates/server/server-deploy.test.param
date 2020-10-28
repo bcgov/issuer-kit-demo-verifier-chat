@@ -14,7 +14,7 @@
 APPLICATION_DOMAIN=dsc-chat-server-test.pathfinder.gov.bc.ca
 # SOURCE_IMAGE_NAME=dsc-chat-server
 TAG_NAME=test
-# MOUNT_PATH=/usr/src/app/data
+# MOUNT_PATH=/opt/app-root/src/data
 # PERSISTENT_VOLUME_SIZE=1Gi
 # PERSISTENT_VOLUME_CLASS=netapp-file-standard
 # MIN_REPLICAS=1
