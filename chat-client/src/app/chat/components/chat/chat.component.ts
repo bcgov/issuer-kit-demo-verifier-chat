@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
 import { Paginated } from '@feathersjs/feathers';
 
@@ -15,7 +15,7 @@ import { UtilService } from '@app/services/util.service';
   styleUrls: ['./chat.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatComponent {
+export class ChatComponent implements AfterViewInit {
   @ViewChild('chat') chat: ElementRef;
   @ViewChild('list') list: ElementRef;
   @ViewChildren('message') messages: QueryList<any>;
@@ -47,11 +47,11 @@ export class ChatComponent {
     return this.auth.userData$;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.scrollToBottom();
     this.messages.changes.subscribe(this.scrollToBottom);
   }
-  
+
   scrollToBottom = () => {
     if (this.messages && this.messages.length) {
       this.list.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
