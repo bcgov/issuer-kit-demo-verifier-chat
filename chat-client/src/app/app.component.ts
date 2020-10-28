@@ -20,6 +20,7 @@ import * as hash from 'object-hash';
 export class AppComponent implements OnInit, OnDestroy {
   private oidcSubscription: Subscription;
 
+  defaultLang = 'en';
   title = 'chat-client';
   loading = true;
 
@@ -30,8 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private feathers: FeathersService,
     private util: UtilService
   ) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+    this.initLang();
   }
 
   ngOnInit(): void {
@@ -68,9 +68,27 @@ export class AppComponent implements OnInit, OnDestroy {
     this.oidcSubscription.unsubscribe();
   }
 
-  toggleLanguage(): void {
-    const curr = this.translate.currentLang;
-    this.translate.use(curr === 'en' ? 'fr' : 'en');
+  private initLang() {
+    const lang = this.preferredLang || this.defaultLang
+    this.translate.setDefaultLang(lang);
+    this.toggleLanguage(lang);
+  }
+
+  toggleLanguage(to: string): void {
+    this.translate.use(to);
+    this.preferredLang = to;
+  }
+
+  private get preferredLang(): string {
+    return window.sessionStorage.getItem('dsc-chat-client-lang');
+  }
+
+  private set preferredLang(lang: string) {
+    window.sessionStorage.setItem('dsc-chat-client-lang', lang);
+  }
+
+  public get currentLang(): string {
+    return this.translate.currentLang;
   }
 
   public get isAuthenticated$(): Observable<boolean> {
