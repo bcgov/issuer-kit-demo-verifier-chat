@@ -8,7 +8,9 @@
             <div class="language">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
-                        <a (click)="toggleLanguage()">{{ 'navbar.language' | translate }}</a>
+                        <a (click)="toggleLanguage(currentLang === 'en' ? 'fr' : 'en')">
+                            {{ 'navbar.language' | translate }}
+                        </a>
                     </li>
                 </ul>
             </div>
