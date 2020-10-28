@@ -1,41 +1,43 @@
 {
     "navbar": {
-        "brand": "Chat (FR)",
+        "brand": "La conversation",
         "language": "EN",
         "settings-menu": {
-            "login": "Log In (FR)",
-            "logout": "Log Out (FR)"
+            "login": "Se connecter",
+            "logout": "Se déconnecter"
         }
     },
     "disclaimer": {
-        "title": "Terms of Service (FR)",
-        "content": "Use of this service is governed by the following terms and conditions. Please read these terms and conditions carefully, as by using this website you will be deemed to have agreed to them. If you do not agree with these terms and conditions, do not use this service. (FR)",
+        "title": "Conditions d'utilisation",
+        "content": "L'utilisation de ce service est régie par les termes et conditions suivants. Veuillez lire attentivement ces termes et conditions, car en utilisant ce site Web, vous serez réputé les avoir acceptés. Si vous n'acceptez pas ces termes et conditions, n'utilisez pas ce service.",
         "terms": "<TERMS PLACEHOLDER> (FR)",
         "form": {
-            "agree-checkbox-text": "I agree with the above terms and conditions. (FR)",
-            "agree-button-text": "Agree (FR)"
+            "agree-checkbox-text": "J'accepte les termes et conditions ci-dessus.",
+            "agree-button-text": "Accepter"
         }
     },
     "home": {
+        "title": "La conversation CCP",
+        "content": "Utilisez vos informations d'identification pour rejoindre la conversation.",
         "form": {
-            "enter-button-text": "Enter (FR)"
+            "enter-button-text": "Entrer"
         }
     },
     "entry": {
         "form": {
-            "first-name-text": "First Name (FR)",
-            "last-name-text": "Last Name (FR)",
-            "address-text": "Address (FR)",
-            "city-text": "City (FR)",
-            "province-text": "Province (FR)",
-            "postal-code-text": "Postal Code (FR)",
-            "enter-button-text": "Enter (FR)"
+            "first-name-text": "Prénom",
+            "last-name-text": "Nom de famille",
+            "address-text": "Adresse",
+            "city-text": "Ville",
+            "province-text": "Province",
+            "postal-code-text": "Code postal",
+            "enter-button-text": "Entrer"
         }
     },
     "chat": {
-        "users": "{{ count }} users (FR)",
+        "users": "{{ count }} utilisateurs",
         "form": {
-            "send-button-text": "Send (FR)"
+            "send-button-text": "Envoyer"
         }
     }
 }

@@ -31,7 +31,7 @@ export class AuthService {
    * checkAuth
    */
   public checkAuth(url?: string): Observable<boolean> {
-    return this.oidcSecurityService.checkAuth(url)
+    return this.oidcSecurityService.checkAuth(url);
   }
 
   public get isAuthenticated$(): Observable<boolean> {

@@ -17,6 +17,8 @@
         }
     },
     "home": {
+        "title": "PCTF Chat",
+        "content": "Use your credential to join the conversation.",
         "form": {
             "enter-button-text": "Enter"
         }

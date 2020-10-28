@@ -4,12 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '@app/guards/auth.guard';
 
 import { ChatComponent } from './components/chat/chat.component';
-import { EntryComponent } from './components/entry/entry.component';
 
 
 const routes: Routes = [
-  { path: '', component: ChatComponent, canActivate: [AuthGuard] },
-  { path: 'entry', component: EntryComponent, canActivate: [AuthGuard] }
+  { path: '', component: ChatComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
