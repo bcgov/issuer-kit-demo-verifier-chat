@@ -7,12 +7,10 @@
     "max": 50
   },
   "authentication": {
-    "entity": "user",
-    "service": "users",
-    "secret": "oNWqBgJBZl0BFYy5Ok9Tt9FSS3Y=",
+    "entity": null,
+    "secret": "CHANGE_ME",
     "authStrategies": [
-      "jwt",
-      "local"
+      "jwt"
     ],
     "jwtOptions": {
       "header": {
@@ -22,10 +20,6 @@
       "issuer": "feathers",
       "algorithm": "HS256",
       "expiresIn": "1d"
-    },
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
     }
   },
   "nedb": "../data"

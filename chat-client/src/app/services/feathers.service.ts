@@ -32,9 +32,4 @@ export class FeathersService {
   public service(name: string): any {
     return this.client.service(name);
   }
-
-  // DEPRECATED
-  public authenticate(credentials?): Promise<any> {
-    return this.client.authenticate(credentials);
-  }
 }
