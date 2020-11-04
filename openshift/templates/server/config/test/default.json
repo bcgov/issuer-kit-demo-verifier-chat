@@ -1,0 +1,16 @@
+{
+    "host": "localhost",
+    "port": 3030,
+    "public": "../public/",
+    "paginate": {
+        "default": 10,
+        "max": 50
+    },
+    "authentication": {
+        "jwksUri": "https://test.oidc.gov.bc.ca/auth/realms/gzyg46lx/protocol/openid-connect/certs",
+        "algorithms": [
+            "RS256"
+        ]
+    },
+    "nedb": "../data"
+}
