@@ -7,26 +7,10 @@
     "max": 50
   },
   "authentication": {
-    "entity": "user",
-    "service": "users",
-    "secret": "oNWqBgJBZl0BFYy5Ok9Tt9FSS3Y=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
-    "jwtOptions": {
-      "header": {
-        "typ": "access"
-      },
-      "audience": "https://yourdomain.com",
-      "issuer": "feathers",
-      "algorithm": "HS256",
-      "expiresIn": "1d"
-    },
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
-    }
+    "jwksUri": "http://localhost:8180/auth/realms/vc-authn/protocol/openid-connect/certs",
+    "algorithms": [
+      "RS256"
+    ]
   },
   "nedb": "../data"
 }

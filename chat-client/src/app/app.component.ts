@@ -44,8 +44,11 @@ export class AppComponent implements OnInit, OnDestroy {
           const params = this.util.processTokenPayload(data);
 
           if (!(params.firstName && params.lastName && params.province)) {
+            console.error(new Error('Token does not have required fields'));
             this.auth.logout();
           }
+
+          this.feathers.connect(this.auth.token);
 
           const id = hash(params);
 
@@ -55,7 +58,10 @@ export class AppComponent implements OnInit, OnDestroy {
             .catch(() => this.feathers.service('users')
               .create({ id, ...params })
             )
-            .catch(() => this.auth.logout()));
+            .catch((e) => {
+              console.error(e);
+              this.auth.logout();
+            }));
         })
       )
       .subscribe({
