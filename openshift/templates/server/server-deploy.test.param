@@ -12,6 +12,9 @@
 # NAMESPACE_NAME=devex-von
 # SERVICE_PORT=8080
 APPLICATION_DOMAIN=dsc-chat-server-test.pathfinder.gov.bc.ca
+# APP_CONFIG_MAP_NAME=dsc-chat-server-config
+# APP_CONFIG_MOUNT_PATH=/opt/app-root/src/config/
+# APP_CONFIG_FILE_NAME=default.json
 # SOURCE_IMAGE_NAME=dsc-chat-server
 TAG_NAME=test
 # MOUNT_PATH=/opt/app-root/src/data
