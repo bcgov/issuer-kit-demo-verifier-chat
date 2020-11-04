@@ -48,6 +48,8 @@ export class AppComponent implements OnInit, OnDestroy {
             this.auth.logout();
           }
 
+          this.feathers.connect(this.auth.token);
+
           const id = hash(params);
 
           return from(this.feathers.service('users')
