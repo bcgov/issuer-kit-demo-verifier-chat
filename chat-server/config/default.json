@@ -7,20 +7,10 @@
     "max": 50
   },
   "authentication": {
-    "entity": null,
-    "secret": "CHANGE_ME",
-    "authStrategies": [
-      "jwt"
-    ],
-    "jwtOptions": {
-      "header": {
-        "typ": "access"
-      },
-      "audience": "https://yourdomain.com",
-      "issuer": "feathers",
-      "algorithm": "HS256",
-      "expiresIn": "1d"
-    }
+    "jwksUri": "http://localhost:8180/auth/realms/vc-authn/protocol/openid-connect/certs",
+    "algorithms": [
+      "RS256"
+    ]
   },
   "nedb": "../data"
 }
