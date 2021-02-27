@@ -170,7 +170,7 @@ objects:
         requests:
           storage: ${PERSISTENT_VOLUME_SIZE}
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-pods-to-api
       labels:
@@ -222,18 +222,18 @@ parameters:
     required: true
     description: The namespace of the OpenShift project containing the imagestream
       for the application.
-    value: devex-von-tools
+    value: 4a9599-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to..
     required: true
-    value: devex-von
+    value: 4a9599
   - name: SERVICE_PORT
     displayName: Service Port
     required: true
     description: The port exposed by the controller.
     value: '8080'
-  - description: The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca,
+  - description: The exposed hostname that will route to the service, e.g., myappname.apps.silver.devops.gov.bc.ca,
       if left blank a value will be defaulted.
     displayName: Application Hostname
     name: APPLICATION_DOMAIN

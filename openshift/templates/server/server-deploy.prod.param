@@ -8,10 +8,10 @@
 # APP_GROUP=dsc-chat
 # SUFFIX=
 # ROLE=server
-# IMAGE_NAMESPACE=devex-von-tools
-# NAMESPACE_NAME=devex-von
+# IMAGE_NAMESPACE=4a9599-tools
+# NAMESPACE_NAME=4a9599
 # SERVICE_PORT=8080
-APPLICATION_DOMAIN=dsc-chat-server.pathfinder.gov.bc.ca
+APPLICATION_DOMAIN=dsc-chat-server.apps.silver.devops.gov.bc.ca
 # APP_CONFIG_MAP_NAME=dsc-chat-server-config
 # APP_CONFIG_MOUNT_PATH=/opt/app-root/src/config/
 # APP_CONFIG_FILE_NAME=default.json

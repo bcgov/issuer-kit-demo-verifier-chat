@@ -6,7 +6,7 @@
 NAME=dsc-chat-server
 APP_NAME=dsc-chat
 APP_GROUP=dsc-chat-runtime
-NAMESPACE_NAME=devex-von
+NAMESPACE_NAME=4a9599
 ENV_NAME=tools
 GIT_REPO_URL=https://github.com/bcgov/issuer-kit-demo-verifier-chat.git
 GIT_REF=main
