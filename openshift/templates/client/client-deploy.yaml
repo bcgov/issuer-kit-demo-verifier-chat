@@ -153,7 +153,7 @@ objects:
         name: ${NAME}${SUFFIX}
         weight: 100
   - kind: NetworkSecurityPolicy
-    apiVersion: secops.pathfinder.gov.bc.ca/v1alpha1
+    apiVersion: security.devops.gov.bc.ca/v1alpha1
     metadata:
       name: custom-${APP_NAME}-${NAME}${SUFFIX}-policy
       labels:
@@ -206,12 +206,12 @@ parameters:
     displayName: Image Namespace
     name: IMAGE_NAMESPACE
     required: true
-    value: devex-von-tools
+    value: 4a9599-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to..
     required: true
-    value: devex-von
+    value: 4a9599
   - name: CADDY_CONFIG_MOUNT_PATH
     displayName: Caddy Config Mount Path
     description: The path to use to mount the configuration file(s).
@@ -238,7 +238,7 @@ parameters:
     description: The name of the application configuration file.
     required: true
     value: config.json
-  - description: The exposed hostname that will route to the service, e.g., myappname.pathfinder.gov.bc.ca,
+  - description: The exposed hostname that will route to the service, e.g., myappname.apps.silver.devops.gov.bc.ca,
       if left blank a value will be defaulted.
     displayName: Application Hostname
     name: APPLICATION_DOMAIN

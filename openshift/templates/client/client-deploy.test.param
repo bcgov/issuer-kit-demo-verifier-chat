@@ -8,8 +8,8 @@
 # APP_GROUP=dsc-chat
 # SUFFIX=
 # ROLE=client
-# IMAGE_NAMESPACE=devex-von-tools
-# NAMESPACE_NAME=devex-von
+# IMAGE_NAMESPACE=4a9599-tools
+# NAMESPACE_NAME=4a9599
 # CADDY_CONFIG_MOUNT_PATH=/etc/caddy/
 # CADDY_CONFIG_FILE_NAME=CAddyfile
 # APP_CONFIG_MAP_NAME=dsc-chat-client-config
