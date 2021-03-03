@@ -7,6 +7,60 @@ metadata:
     tags: nodejs
     iconClass: icon-nodejs
 objects:
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}-allow-ingress
+      labels:
+        name: ${NAME}-allow-ingress
+        app: ${APP_NAME}
+        app-group: ${APP_GROUP}
+        role: ${ROLE}
+        env: ${TAG_NAME}
+    spec:
+      description: |
+        Allow traffic from routes into the ${ROLE} container(s).
+      ingress:
+        - from:
+            - namespaceSelector:
+                matchLabels:
+                  network.openshift.io/policy-group: ingress
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}
+          env: ${TAG_NAME}
+      policyTypes:
+        - Ingress
+  - kind: NetworkPolicy
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: ${NAME}
+      labels:
+        name: ${NAME}
+        app: ${APP_NAME}
+        env: ${TAG_NAME}
+    spec:
+      description: Allow the client to access the server.
+      ingress:
+        - from:
+          - podSelector:
+              matchLabels:
+                role: client
+                app: ${APP_NAME}
+                env: ${TAG_NAME}
+            namespaceSelector:
+              matchLabels:
+                name: ${NAMESPACE_NAME}
+                environment: ${TAG_NAME}
+          ports:
+            - protocol: TCP
+              port: ${{SERVICE_PORT}}
+      podSelector:
+        matchLabels:
+          role: ${ROLE}
+          app: ${APP_NAME}
+          env: ${TAG_NAME}
   - kind: Service
     apiVersion: v1
     metadata:
@@ -169,26 +223,26 @@ objects:
       resources:
         requests:
           storage: ${PERSISTENT_VOLUME_SIZE}
-  - kind: NetworkSecurityPolicy
-    apiVersion: security.devops.gov.bc.ca/v1alpha1
-    metadata:
-      name: custom-${APP_NAME}-pods-to-api
-      labels:
-        name: custom-${APP_NAME}-pods-to-api
-        app: ${APP_NAME}
-        app-group: ${APP_GROUP}
-        role: ${ROLE}
-        env: ${TAG_NAME}
-    spec:
-      description: 'Allow pods to talk to the internal api so deployments work.
+  # - kind: NetworkSecurityPolicy
+  #   apiVersion: security.devops.gov.bc.ca/v1alpha1
+  #   metadata:
+  #     name: custom-${APP_NAME}-pods-to-api
+  #     labels:
+  #       name: custom-${APP_NAME}-pods-to-api
+  #       app: ${APP_NAME}
+  #       app-group: ${APP_GROUP}
+  #       role: ${ROLE}
+  #       env: ${TAG_NAME}
+  #   spec:
+  #     description: 'Allow pods to talk to the internal api so deployments work.
 
-        This only needs to be specified once per environment.
+  #       This only needs to be specified once per environment.
 
-        '
-      source:
-        - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
-      destination:
-        - - int:network=internal-cluster-api-endpoint
+  #       '
+  #     source:
+  #       - - $namespace=${NAMESPACE_NAME}-${TAG_NAME}
+  #     destination:
+  #       - - int:network=internal-cluster-api-endpoint
 parameters:
   - name: NAME
     displayName: Name
@@ -222,12 +276,12 @@ parameters:
     required: true
     description: The namespace of the OpenShift project containing the imagestream
       for the application.
-    value: 4a9599-tools
+    value: a99fd4-tools
   - name: NAMESPACE_NAME
     displayName: Namespace Name
     description: The name of the namespace being deployed to..
     required: true
-    value: 4a9599
+    value: a99fd4
   - name: SERVICE_PORT
     displayName: Service Port
     required: true
