@@ -8,14 +8,14 @@
 # APP_GROUP=dsc-chat
 # SUFFIX=
 # ROLE=client
-# IMAGE_NAMESPACE=4a9599-tools
-# NAMESPACE_NAME=4a9599
+# IMAGE_NAMESPACE=a99fd4-tools
+# NAMESPACE_NAME=a99fd4
 # CADDY_CONFIG_MOUNT_PATH=/etc/caddy/
 # CADDY_CONFIG_FILE_NAME=CAddyfile
 # APP_CONFIG_MAP_NAME=dsc-chat-client-config
 # APP_CONFIG_MOUNT_PATH=/srv/assets/
 # APP_CONFIG_FILE_NAME=config.json
-APPLICATION_DOMAIN=pctftest-test.vonx.io
+APPLICATION_DOMAIN=pctftest-test.apps.silver.devops.gov.bc.ca
 # SOURCE_IMAGE_NAME=dsc-chat-client
 TAG_NAME=test
 # CPU_REQUEST=10m
