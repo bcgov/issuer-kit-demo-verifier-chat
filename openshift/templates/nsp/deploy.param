@@ -3,5 +3,5 @@
 # Component: .
 # Template File: ../openshift/templates/nsp/deploy.yaml
 #=========================================================
-NAMESPACE_NAME=a99fd4
+# NAMESPACE_NAME=a99fd4
 ENV_NAME=dev
