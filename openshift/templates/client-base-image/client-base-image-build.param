@@ -6,6 +6,7 @@
 NAME=dsc-chat-client-base-image
 APP_NAME=dsc-chat
 APP_GROUP=dsc-chat-base-image
+SOURCE_IMAGE_NAME=docker-remote.artifacts.developer.gov.bc.ca/node:erbium
 GIT_REPO_URL=https://github.com/bcgov/issuer-kit-demo-verifier-chat.git
 GIT_REF=main
 SOURCE_CONTEXT_DIR=.
