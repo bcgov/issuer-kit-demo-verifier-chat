@@ -15,7 +15,7 @@
 # APP_CONFIG_MAP_NAME=dsc-chat-client-config
 # APP_CONFIG_MOUNT_PATH=/srv/assets/
 # APP_CONFIG_FILE_NAME=config.json
-APPLICATION_DOMAIN=pctftest.apps.silver.devops.gov.bc.ca
+APPLICATION_DOMAIN=pctftest.vonx.io
 # SOURCE_IMAGE_NAME=dsc-chat-client
 TAG_NAME=prod
 # CPU_REQUEST=10m
