@@ -33,6 +33,9 @@ objects:
       strategy:
         type: Docker
         dockerStrategy:
+          from:
+            kind: DockerImage
+            name: ${SOURCE_IMAGE_NAME}
           dockerfilePath: ${DOCKER_FILE_PATH}
       output:
         to:
@@ -63,6 +66,11 @@ parameters:
     description: The name assigned to all of the deployments in this project.
     required: true
     value: dsc-chat-base-image
+  - name: SOURCE_IMAGE_NAME
+    displayName: Source Image
+    description: The fully-qualified name of the source image for this component. 
+    required: true
+    value: docker-remote.artifacts.developer.gov.bc.ca/node:erbium
   - name: GIT_REPO_URL
     displayName: Git Repo URL
     description: The URL to your GIT repo, don't use the this default unless your

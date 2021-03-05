@@ -219,7 +219,7 @@ objects:
     spec:
       storageClassName: ${PERSISTENT_VOLUME_CLASS}
       accessModes:
-        - ReadWriteOnce
+        - ReadWriteMany
       resources:
         requests:
           storage: ${PERSISTENT_VOLUME_SIZE}
