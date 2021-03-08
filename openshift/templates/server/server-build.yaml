@@ -121,7 +121,7 @@ parameters:
     displayName: Source Image Name
     required: true
     description: The name of the source image.
-    value: docker-remote.artifacts.developer.gov.bc.ca/centos/nodejs-12-centos7
+    value: registry.access.redhat.com/ubi8/nodejs-12
   - name: SOURCE_IMAGE_TAG
     displayName: Source Image Tag
     required: true
