@@ -1,6 +1,6 @@
 {
   "RUNMODE": "",
-  "CHAT_SERVER": "https://dsc-chat-server.pathfinder.gov.bc.ca",
+  "CHAT_SERVER": "https://dsc-chat-server.apps.silver.devops.gov.bc.ca",
   "STS_SERVER": "https://oidc.gov.bc.ca",
   "REALM": "gzyg46lx",
   "CLIENT_ID": "issuer-kit-demo-verifier-chat",
