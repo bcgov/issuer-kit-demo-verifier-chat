@@ -1,7 +1,7 @@
 {
   "RUNMODE": "",
   "CHAT_SERVER": "https://dsc-chat-server.apps.silver.devops.gov.bc.ca",
-  "STS_SERVER": "https://oidc.gov.bc.ca",
+  "STS_SERVER": "https://test.oidc.gov.bc.ca",
   "REALM": "gzyg46lx",
   "CLIENT_ID": "issuer-kit-demo-verifier-chat",
   "KC_IDP_HINT": "verifiable-credential",
