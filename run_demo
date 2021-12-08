@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# getDockerHost; for details refer to https://github.com/bcgov/DITP-DevOps/tree/main/code/snippets#getdockerhost
+. /dev/stdin <<<"$(cat <(curl -s --raw https://raw.githubusercontent.com/bcgov/DITP-DevOps/main/code/snippets/getDockerHost))" 
+
 function build() {
 	echo -e "\nBuilding dsc-chat-server image..."
 	docker build -t dsc-chat-server -f docker/server/Dockerfile ./chat-server
@@ -17,7 +20,7 @@ function up() {
 		# provided via APPLICATION_URL environment variable
 		export RUNMODE="docker"
 	elif [ -z "${PWD_HOST_FQDN}" ]; then
-		DOCKERHOST=`docker run --rm --net=host eclipse/che-ip`
+		export DOCKERHOST=$(getDockerHost)
 		export RUNMODE="docker"
 	else
 		PWD_HOST="${PWD_HOST_FQDN}"
