@@ -1,5 +1,5 @@
 kind: Template
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 metadata:
   annotations:
     description: Build template for an Angular app served by nginx.
@@ -80,7 +80,7 @@ parameters:
     displayName: Source Image Name
     description: The name of the runtime image.
     required: true
-    value: docker-remote.artifacts.developer.gov.bc.ca/caddy
+    value: artifacts.developer.gov.bc.ca/docker-remote/caddy
   - name: SOURCE_IMAGE_KIND
     displayName: Source Image Kind
     description: The 'kind' (type) of the  source image; typically ImageStreamTag,
