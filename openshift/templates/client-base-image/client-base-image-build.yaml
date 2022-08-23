@@ -70,7 +70,7 @@ parameters:
     displayName: Source Image
     description: The fully-qualified name of the source image for this component. 
     required: true
-    value: docker-remote.artifacts.developer.gov.bc.ca/node:erbium
+    value: artifacts.developer.gov.bc.ca/docker-remote/node:erbium
   - name: GIT_REPO_URL
     displayName: Git Repo URL
     description: The URL to your GIT repo, don't use the this default unless your
