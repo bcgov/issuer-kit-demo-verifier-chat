@@ -165,6 +165,7 @@ objects:
         app-group: ${APP_GROUP}
         role: ${ROLE}
         env: ${TAG_NAME}
+        certbot-managed: ${CERTBOT_MANAGED_ROUTE}
       name: ${NAME}${SUFFIX}
     spec:
       host: ${APPLICATION_DOMAIN}
@@ -227,6 +228,11 @@ parameters:
       Policies
     required: true
     value: client
+  - name: CERTBOT_MANAGED_ROUTE
+    displayName: Certbot Managed Route
+    description: Flag indicating whether the routes certificates are managed by CertBot.
+    required: true
+    value: 'false'
   - description: The namespace where to get the above image name
     displayName: Image Namespace
     name: IMAGE_NAMESPACE
