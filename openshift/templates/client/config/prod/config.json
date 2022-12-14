@@ -1,8 +1,8 @@
 {
   "RUNMODE": "",
   "CHAT_SERVER": "https://dsc-chat-server.apps.silver.devops.gov.bc.ca",
-  "STS_SERVER": "https://test.oidc.gov.bc.ca",
-  "REALM": "gzyg46lx",
+  "STS_SERVER": "https://test.loginproxy.gov.bc.ca",
+  "REALM": "digitaltrust-citz",
   "CLIENT_ID": "issuer-kit-demo-verifier-chat",
   "KC_IDP_HINT": "verifiable-credential",
   "PRES_REQ_CONF_ID": "pctf-chat"
